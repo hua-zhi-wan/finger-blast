@@ -12,8 +12,6 @@ class_name Enemy
 @onready var original_color := modulate
 
 
-
-
 func _on_kill_all_tomb_body_entered(body: Node2D) -> void:
 	if body.has_method("hurt"):
 		body.queue_free()
