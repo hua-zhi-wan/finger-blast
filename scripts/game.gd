@@ -11,30 +11,24 @@ var rusher_queue: int = 0
 @export var cleaner_prefab: PackedScene
 var cleaner_queue: int = 0
 
+@export var swinger_prefab: PackedScene
+var swinger_queue: int = 0
+
 @export var tomb_count: int
 var tomb_queue: Array[Vector2] = []
 
 @export var wave_label: Label
 @export var score_label: Label
 
-var wave_index := 0
+var wave_index := 1
 var score := 0
 
 @onready var hand = get_tree().get_first_node_in_group('hand') as Hand
 
 
 func _ready() -> void:
-	var filled_grids = range(220 - tomb_count)
-	filled_grids.append_array(range(-100, -100 - tomb_count, -1))
-	filled_grids.shuffle()
-	var index = 0
-	for is_filled in filled_grids:
-		if is_filled < 0:
-			tomb_queue.append(Vector2(index % 20 * 16, (index / 20 + 1) * 16))
-			await get_tree().create_timer(0.02).timeout
-		index += 1
-	
-	$Timer.start()
+	await fill_tomb(tomb_count)
+	$MainTimer.start()
 	Engine.time_scale = 1
 
 
@@ -60,12 +54,42 @@ func _process(_delta: float) -> void:
 		else:
 			target_position.y = randi_range(11, 14) * 16
 			horizontal_position = -1 if hand.global_position.x > 16 * 10 else 1
-		target_position.x = (horizontal_position + 1) * 8 * 20
+		target_position.x = (horizontal_position + 1) * 8 * 19
 		var cleaner = cleaner_prefab.instantiate() as Cleaner
 		$Enemies.add_child(cleaner)
 		cleaner.global_position = target_position
 		cleaner.move_horizontal_direction = -horizontal_position
 		cleaner_queue -= 1
+	while swinger_queue > 0:
+		var target_position = Vector2()
+		var horizontal_position = -1 if hand.global_position.x > 16 * 10 else 1
+		target_position.x = (horizontal_position + 1) * 8 * 19
+		target_position.y = randi_range(11, 14) * 16
+		var swinger = swinger_prefab.instantiate() as Swinger
+		$Enemies.add_child(swinger)
+		swinger.global_position = target_position
+		swinger.move_horizontal_direction = -horizontal_position
+		swinger.move_vertical_diretion = [-1, 1].pick_random()
+		swinger_queue -= 1
+
+
+func fill_tomb(n: int):
+	if n <= 0:
+		return
+	var filled_grids = range(220 - n)
+	filled_grids.append_array(range(-100, -100 - n, -1))
+	filled_grids.shuffle()
+	for tomb: Tomb in get_tree().get_nodes_in_group('tomb'):
+		var i = roundi(tomb.global_position.x) + roundi(tomb.global_position.y) * 20
+		if i < filled_grids.size():
+			filled_grids[i] = 0
+	var index = 0
+	for is_filled in filled_grids:
+		if is_filled < 0:
+			var tomb_target_position = Vector2(index % 20 * 16, (index / 20 + 1) * 16)
+			tomb_queue.append(tomb_target_position)
+			await get_tree().create_timer(0.02).timeout
+		index += 1
 
 
 func get_score(v: int):
@@ -86,22 +110,26 @@ func get_score(v: int):
 func _wave() -> void:
 	if not $Enemies.get_children().is_empty():
 		return
-	if wave_index > 0:
+	if wave_index > 1:
 		Engine.time_scale += 0.02
-		wave_label.text = "WAVE: %d" % wave_index
-	$RusherTimer.stop()
-	$CleanerTimer.stop()
+		wave_label.text = "WAVE:%d" % wave_index
+	
+	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
+		timer.stop()
 	
 	var target_position = Vector2(16 * randi_range(0, 20), 0)
 	var direction = [-1, 1].pick_random()
 	
-	if wave_index > 0:
+	if wave_index > 1:
 		for entity: Node2D in $Tombs.get_children():
 			if entity is Tomb:
 				var tomb = entity as Tomb
 				tomb.move_down()
+		await get_tree().create_timer(1).timeout
 	
-	await get_tree().create_timer(1).timeout
+	var total_tomb = get_tree().get_node_count_in_group('tomb')
+	if total_tomb < tomb_count * 0.5:
+		await fill_tomb(tomb_count - total_tomb)
 	
 	
 	for i in range(randi_range(4, 8) + wave_index):
@@ -111,8 +139,8 @@ func _wave() -> void:
 		soldier.move_horizontal_direction = direction
 		await get_tree().create_timer(16.0 / soldier.move_speed).timeout
 	
-	$RusherTimer.start()
-	$CleanerTimer.start()
+	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
+		timer.start()
 	
 	wave_index += 1
 
@@ -130,3 +158,9 @@ func _on_rusher_timer_timeout() -> void:
 func _on_cleaner_timer_timeout() -> void:
 	if get_tree().get_node_count_in_group('soldier') > 0:
 		cleaner_queue += 1
+
+
+func _on_swinger_timer_timeout() -> void:
+	if get_tree().get_node_count_in_group('soldier') > 0:
+		if get_tree().get_node_count_in_group('swinger') <= 1:
+			swinger_queue += 1

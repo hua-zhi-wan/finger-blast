@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://sp4paferbwcx" path="res://sounds/kill_enemy.sfxr" id="5_fqfyq"]
 [ext_resource type="AudioStream" uid="uid://bwt8k88c5ipe1" path="res://sounds/explosion.sfxr" id="6_hjkgk"]
 [ext_resource type="AudioStream" uid="uid://m6xp4sqy1ku7" path="res://sounds/hand_hit.sfxr" id="7_fakxf"]
+[ext_resource type="AudioStream" uid="uid://cd7expq8830i" path="res://sounds/spawn.sfxr" id="8_1vf2w"]
+[ext_resource type="AudioStream" uid="uid://da1lydegw6g6l" path="res://sounds/grow.sfxr" id="9_f5c3n"]
 
 [node name="SE" type="Node" unique_id=1704279195]
 script = ExtResource("1_w4iuk")
@@ -31,5 +33,13 @@ stream = ExtResource("6_hjkgk")
 
 [node name="HandHit" type="AudioStreamPlayer" parent="." unique_id=1548564214]
 stream = ExtResource("7_fakxf")
+
+[node name="Spawn" type="AudioStreamPlayer" parent="." unique_id=1350835865]
+stream = ExtResource("8_1vf2w")
+volume_db = -3.0
+
+[node name="Grow" type="AudioStreamPlayer" parent="." unique_id=2005127209]
+stream = ExtResource("9_f5c3n")
+volume_db = -12.0
 
 [node name="Empty" type="AudioStreamPlayer" parent="." unique_id=1890932868]

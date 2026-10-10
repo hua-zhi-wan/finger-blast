@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b441jj5eoooas" path="res://scenes/soldier.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://8fsqad20hwto" path="res://scenes/rusher.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://ch5dlvkbypkju" path="res://scenes/cleaner.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://byggyypqf7dwl" path="res://scenes/swinger.tscn" id="6_u5sy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s1fef"]
 font_size = 9
@@ -24,6 +25,7 @@ tomb_prefab = ExtResource("2_yqjtg")
 soldier_prefab = ExtResource("3_lbhrr")
 rusher_prefab = ExtResource("4_iywne")
 cleaner_prefab = ExtResource("6_p57ef")
+swinger_prefab = ExtResource("6_u5sy4")
 tomb_count = 50
 wave_label = NodePath("UI/WaveCount")
 score_label = NodePath("UI/ScoreCount")
@@ -99,15 +101,18 @@ y_sort_enabled = true
 [node name="Enemies" type="Node2D" parent="." unique_id=1635378184]
 y_sort_enabled = true
 
-[node name="Timer" type="Timer" parent="." unique_id=1640697740]
-wait_time = 1.5
+[node name="MainTimer" type="Timer" parent="." unique_id=1640697740 groups=["game_timer"]]
 
-[node name="RusherTimer" type="Timer" parent="." unique_id=2007364389]
+[node name="RusherTimer" type="Timer" parent="." unique_id=2007364389 groups=["game_timer"]]
 wait_time = 4.0
 
-[node name="CleanerTimer" type="Timer" parent="." unique_id=1018402800]
+[node name="CleanerTimer" type="Timer" parent="." unique_id=1018402800 groups=["game_timer"]]
 wait_time = 3.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="SwingerTimer" type="Timer" parent="." unique_id=1332134619 groups=["game_timer"]]
+wait_time = 6.0
+
+[connection signal="timeout" from="MainTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RusherTimer" to="." method="_on_rusher_timer_timeout"]
 [connection signal="timeout" from="CleanerTimer" to="." method="_on_cleaner_timer_timeout"]
+[connection signal="timeout" from="SwingerTimer" to="." method="_on_swinger_timer_timeout"]

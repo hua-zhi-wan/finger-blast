@@ -30,7 +30,7 @@ atlas = ExtResource("2_lmdea")
 region = Rect2(8, 0, 16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypbnc"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [sub_resource type="Animation" id="Animation_coh01"]
 length = 0.001

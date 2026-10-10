@@ -69,7 +69,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_khhxn"]
 radius = 4.0
 
-[node name="Soldier" type="CharacterBody2D" unique_id=204449402]
+[node name="Soldier" type="CharacterBody2D" unique_id=204449402 groups=["soldier"]]
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_0vpqw")
@@ -86,8 +86,8 @@ texture = SubResource("GradientTexture2D_0vpqw")
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_s1fef")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=914834872 groups=["soldier"]]
-self_modulate = Color(0.84705883, 0.38039216, 0.4509804, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=914834872]
+self_modulate = Color(1, 0.92941177, 0.6313726, 1)
 material = SubResource("ShaderMaterial_2oslh")
 position = Vector2(8, 14)
 texture = ExtResource("1_af1c2")

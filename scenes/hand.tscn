@@ -25,7 +25,7 @@ metadata/_snap_count = 16
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
-size = Vector2(12, 12)
+size = Vector2(4, 4)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m1v21"]
 noise_type = 2
@@ -160,7 +160,6 @@ _data = {
 
 [node name="Hand" type="CharacterBody2D" unique_id=126718059 node_paths=PackedStringArray("camera") groups=["hand"]]
 collision_layer = 2
-collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_k7pjy")
 camera = NodePath("Camera2D")

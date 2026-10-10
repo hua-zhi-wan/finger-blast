@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://da1lydegw6g6l"
+path="res://.godot/imported/grow.sfxr-ef7b40822de0499266f593ef8672eaaf.sample"
+
+[deps]
+
+source_file="res://sounds/grow.sfxr"
+dest_files=["res://.godot/imported/grow.sfxr-ef7b40822de0499266f593ef8672eaaf.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

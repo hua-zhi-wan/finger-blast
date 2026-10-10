@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daob35re8bo82"
-path="res://.godot/imported/tomb.png-8fd9a19062f95d4e2b02657a6f7e17e2.ctex"
+uid="uid://bkuhpefvw8x4o"
+path="res://.godot/imported/tomb6.png-12753af50525412515848b49791c86ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tomb.png"
-dest_files=["res://.godot/imported/tomb.png-8fd9a19062f95d4e2b02657a6f7e17e2.ctex"]
+source_file="res://sprites/tomb6.png"
+dest_files=["res://.godot/imported/tomb6.png-12753af50525412515848b49791c86ac.ctex"]
 
 [params]
 

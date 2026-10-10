@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bfewlj6wjnqbj"]
 
-[ext_resource type="Texture2D" uid="uid://daob35re8bo82" path="res://sprites/tomb.png" id="1_8p7u1"]
+[ext_resource type="Texture2D" uid="uid://daob35re8bo82" path="res://sprites/tomb1.png" id="1_8p7u1"]
 [ext_resource type="Script" uid="uid://bij5p57lh6081" path="res://scripts/tomb.gd" id="1_c0yju"]
 [ext_resource type="Shader" uid="uid://w827ph706iub" path="res://shaders/dissolve.gdshader" id="2_n6n5f"]
-[ext_resource type="Texture2D" uid="uid://c80bxn5ydk588" path="res://sprites/tomb2.png" id="3_gcm2r"]
+[ext_resource type="Texture2D" uid="uid://dln0evghnuv1m" path="res://sprites/tomb2.png" id="3_gcm2r"]
 [ext_resource type="Texture2D" uid="uid://dyerc0rvjwre8" path="res://sprites/tomb3.png" id="4_n6n5f"]
+[ext_resource type="Texture2D" uid="uid://hn3mtalotav5" path="res://sprites/tomb4.png" id="6_lgklo"]
+[ext_resource type="Texture2D" uid="uid://eul4uafoo2rx" path="res://sprites/tomb5.png" id="7_pa2x6"]
+[ext_resource type="Texture2D" uid="uid://bkuhpefvw8x4o" path="res://sprites/tomb6.png" id="8_pa2x6"]
+[ext_resource type="Texture2D" uid="uid://d1fu04gkcv6cf" path="res://sprites/tomb7.png" id="9_q3lqa"]
 
 [sub_resource type="Gradient" id="Gradient_gcm2r"]
 interpolation_mode = 1
@@ -51,6 +55,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_n6n5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lgklo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pa2x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pa2x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q3lqa")
 }],
 "loop": 1,
 "name": &"default",

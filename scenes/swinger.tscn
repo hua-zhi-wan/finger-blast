@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://byggyypqf7dwl"]
+
+[ext_resource type="Script" uid="uid://d0ri1ewuwxgcx" path="res://scripts/swinger.gd" id="1_3ynh5"]
+[ext_resource type="Shader" uid="uid://dxo3cunimsmrw" path="res://shaders/glow.gdshader" id="2_d2ghr"]
+[ext_resource type="Texture2D" uid="uid://dnkhpxwecnh2e" path="res://sprites/soldier.png" id="3_3ynh5"]
+
+[sub_resource type="Gradient" id="Gradient_gcm2r"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8v1i"]
+gradient = SubResource("Gradient_gcm2r")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oslh"]
+resource_local_to_scene = true
+shader = ExtResource("2_d2ghr")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypbnc"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_coh01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_asybb"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 12), Vector2(8, 4), Vector2(8, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3o8hi"]
+_data = {
+&"RESET": SubResource("Animation_coh01"),
+&"walk": SubResource("Animation_asybb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ynh5"]
+radius = 5.0
+
+[node name="Swinger" type="CharacterBody2D" unique_id=577757793 groups=["swinger"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_3ynh5")
+move_speed = 96.0
+max_life = 3
+price = 200
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1752331242]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(8, 12)
+texture = SubResource("GradientTexture2D_n8v1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=129546513]
+self_modulate = Color(1, 0.4392157, 0.52156866, 1)
+material = SubResource("ShaderMaterial_2oslh")
+position = Vector2(8, 12)
+texture = ExtResource("3_3ynh5")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=817897130]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ypbnc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=270460007]
+libraries/ = SubResource("AnimationLibrary_3o8hi")
+autoplay = &"walk"
+
+[node name="KillAllTomb" type="Area2D" parent="." unique_id=783839307]
+visible = false
+position = Vector2(8, 8)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillAllTomb" unique_id=1034589496]
+shape = SubResource("CircleShape2D_3ynh5")
+debug_color = Color(0.7, 0, 0.011666489, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1780163574]
+visible = false
+position = Vector2(0, -32)
+rect = Rect2(0, 32, 16, 16)
+
+[connection signal="body_entered" from="KillAllTomb" to="." method="_on_kill_all_tomb_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

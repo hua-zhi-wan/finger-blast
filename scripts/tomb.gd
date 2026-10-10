@@ -19,6 +19,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.scale = Vector2.ZERO
 	await get_tree().create_timer(randf_range(0, 0.2)).timeout
 	$AnimationPlayer.play("spawn")
+	SE.play_sound("Grow", randf_range(0.7, 1.2))
 
 
 func _process(delta: float) -> void:
@@ -35,7 +36,7 @@ func move_down() -> void:
 
 func hurt() -> void:
 	life -= 1
-	$AnimatedSprite2D.material.set_shader_parameter('dissolve_amount', remap(life, 0, max_life, 1, 0))
+	$AnimatedSprite2D.material.set_shader_parameter('dissolve_amount', remap(life, 0, max_life, 0.8, 0))
 	var offset = $AnimatedSprite2D.offset
 	create_tween().tween_method(func(val):
 		$AnimatedSprite2D.offset = offset + Vector2.from_angle(randf() * PI * 2) * val

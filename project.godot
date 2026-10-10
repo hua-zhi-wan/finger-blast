@@ -10,15 +10,17 @@ config_version=5
 
 [application]
 
-config/name="revenge-of-the-finger"
+config/name="Finger Blast"
 run/main_scene="uid://brcuy5ck64j6n"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=300
-config/icon="uid://csfarogdodhhn"
+config/icon="uid://ccdv5c2xpp1lo"
+config/windows_native_icon="res://theme/favicon.ico"
 
 [autoload]
 
 SE="*uid://dfi2c6f0hcote"
+Global="*uid://dntx12j5qtxdi"
 
 [display]
 
@@ -40,6 +42,7 @@ rusher=""
 cleaner=""
 hand=""
 tomb=""
+swinger=""
 
 [gui]
 
@@ -104,3 +107,4 @@ fire={
 rendering_device/vsync/swapchain_image_count=2
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
