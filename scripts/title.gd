@@ -2,5 +2,6 @@ extends Control
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion or event is InputEventKey:
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
+	for event_name in ["move_left", "move_right", "move_up", "move_down", "fire"]:
+		if event.is_action(event_name):
+			get_tree().change_scene_to_file("res://scenes/game.tscn")

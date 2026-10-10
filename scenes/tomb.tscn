@@ -94,7 +94,7 @@ _data = {
 &"spawn": SubResource("Animation_2da40")
 }
 
-[node name="Tomb" type="StaticBody2D" unique_id=497381214]
+[node name="Tomb" type="StaticBody2D" unique_id=497381214 groups=["tomb"]]
 collision_mask = 0
 script = ExtResource("1_c0yju")
 move_speed = 16.0

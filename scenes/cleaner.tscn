@@ -77,9 +77,9 @@ size = Vector2(16, 30)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_lmdea")
-move_speed = 160.0
+move_speed = 128.0
 max_life = 4
-price = 500
+price = 200
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1752331242]
 self_modulate = Color(0.1, 0.1, 0.1, 1)

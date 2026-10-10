@@ -70,7 +70,8 @@ func _process(_delta: float) -> void:
 
 func get_score(v: int):
 	score_label.offset_transform_scale = Vector2.ONE * 1.1
-	create_tween().tween_property(score_label, 'offset_transform_scale', Vector2.ONE, 0.1)
+	create_tween().tween_property(
+		score_label, 'offset_transform_scale', Vector2.ONE, 0.1)
 	create_tween().tween_method(func(num):
 		score_label.text = str(num)
 	, score, score + v, 0.1)

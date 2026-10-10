@@ -80,7 +80,7 @@ motion_mode = 1
 script = ExtResource("1_asybb")
 move_speed = 160.0
 max_life = 3
-price = 200
+price = 150
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=560509878]
 self_modulate = Color(0.1, 0.1, 0.1, 1)
