@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://ch8do6jqfig17"
+path="res://.godot/imported/hit_tomb.sfxr-b8d6871c1df3b4c0b443986af7878558.sample"
+
+[deps]
+
+source_file="res://sounds/hit_tomb.sfxr"
+dest_files=["res://.godot/imported/hit_tomb.sfxr-b8d6871c1df3b4c0b443986af7878558.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

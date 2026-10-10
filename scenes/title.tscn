@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://brcuy5ck64j6n"]
+
+[ext_resource type="Script" uid="uid://dw75aplftgl3n" path="res://scripts/title.gd" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://csfarogdodhhn" path="res://sprites/hand.png" id="2_wosw1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jiotf"]
+font_size = 18
+shadow_offset = Vector2(2, 2)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jg57k"]
+font_size = 9
+stacked_shadow_count = 1
+
+[sub_resource type="Gradient" id="Gradient_uwrxv"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wosw1"]
+gradient = SubResource("Gradient_uwrxv")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[node name="Title" type="Control" unique_id=1165852687]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ignj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=336782730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1004493885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+
+[node name="Label" type="Label" parent="." unique_id=883566141]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 144.0
+grow_horizontal = 2
+text = "- FINGER -"
+label_settings = SubResource("LabelSettings_jiotf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1351332254]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 160.0
+grow_horizontal = 2
+text = "- BLAST -"
+label_settings = SubResource("LabelSettings_jiotf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1311955513]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 160.0
+offset_right = 96.0
+offset_bottom = 192.0
+grow_horizontal = 2
+text = "- Press Any Key to Start -"
+label_settings = SubResource("LabelSettings_jg57k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1556020653]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(161, 209)
+texture = SubResource("GradientTexture2D_wosw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=455085070]
+self_modulate = Color(0.34117648, 0.69803923, 1, 1)
+position = Vector2(161, 204)
+texture = ExtResource("2_wosw1")

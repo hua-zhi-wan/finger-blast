@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dfi2c6f0hcote"]
+
+[ext_resource type="Script" uid="uid://ds8phcat2a2eu" path="res://scripts/se.gd" id="1_w4iuk"]
+[ext_resource type="AudioStream" uid="uid://hx7nrqgcsvp6" path="res://sounds/shoot.sfxr" id="2_qm5g3"]
+[ext_resource type="AudioStream" uid="uid://ch8do6jqfig17" path="res://sounds/hit_tomb.sfxr" id="3_xosq1"]
+[ext_resource type="AudioStream" uid="uid://d3kx4t1ufk3js" path="res://sounds/hit_enemy.sfxr" id="4_kh3bp"]
+[ext_resource type="AudioStream" uid="uid://sp4paferbwcx" path="res://sounds/kill_enemy.sfxr" id="5_fqfyq"]
+[ext_resource type="AudioStream" uid="uid://bwt8k88c5ipe1" path="res://sounds/explosion.sfxr" id="6_hjkgk"]
+
+[node name="SE" type="Node" unique_id=1704279195]
+script = ExtResource("1_w4iuk")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=154645541]
+stream = ExtResource("2_qm5g3")
+volume_db = -9.0
+
+[node name="HitTomb" type="AudioStreamPlayer" parent="." unique_id=1390966363]
+stream = ExtResource("3_xosq1")
+volume_db = -3.0
+
+[node name="HitEnemy" type="AudioStreamPlayer" parent="." unique_id=700551429]
+stream = ExtResource("4_kh3bp")
+volume_db = -6.0
+
+[node name="KillEnemy" type="AudioStreamPlayer" parent="." unique_id=1237581999]
+stream = ExtResource("5_fqfyq")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=1978834686]
+stream = ExtResource("6_hjkgk")
+
+[node name="Empty" type="AudioStreamPlayer" parent="." unique_id=1890932868]

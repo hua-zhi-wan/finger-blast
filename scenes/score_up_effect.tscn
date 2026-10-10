@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bwk1lpcq0i1po"]
+
+[ext_resource type="Script" uid="uid://l8y2xv8jaxq5" path="res://scripts/score_up_effect.gd" id="1_eluuq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s1fef"]
+font_size = 9
+stacked_shadow_count = 1
+
+[sub_resource type="Animation" id="Animation_eluuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ywxq"]
+resource_name = "new_animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qohei"]
+_data = {
+&"RESET": SubResource("Animation_eluuq"),
+&"new_animation": SubResource("Animation_0ywxq")
+}
+
+[node name="ScoreUpEffect" type="Node2D" unique_id=1237720316]
+script = ExtResource("1_eluuq")
+
+[node name="Label" type="Label" parent="." unique_id=1282421718]
+offset_left = -40.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 8.0
+offset_transform_enabled = true
+text = "+100"
+label_settings = SubResource("LabelSettings_s1fef")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1336479119]
+libraries/ = SubResource("AnimationLibrary_qohei")
+autoplay = &"new_animation"

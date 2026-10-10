@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bfewlj6wjnqbj"]
+
+[ext_resource type="Texture2D" uid="uid://daob35re8bo82" path="res://sprites/tomb.png" id="1_8p7u1"]
+[ext_resource type="Script" uid="uid://bij5p57lh6081" path="res://scripts/tomb.gd" id="1_c0yju"]
+[ext_resource type="Shader" uid="uid://w827ph706iub" path="res://shaders/dissolve.gdshader" id="2_n6n5f"]
+[ext_resource type="Texture2D" uid="uid://c80bxn5ydk588" path="res://sprites/tomb2.png" id="3_gcm2r"]
+[ext_resource type="Texture2D" uid="uid://dyerc0rvjwre8" path="res://sprites/tomb3.png" id="4_n6n5f"]
+
+[sub_resource type="Gradient" id="Gradient_gcm2r"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s1fef"]
+gradient = SubResource("Gradient_gcm2r")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
+size = Vector2(16, 16)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n6n5f"]
+noise_type = 2
+frequency = 0.3014
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p57ef"]
+width = 16
+height = 16
+noise = SubResource("FastNoiseLite_n6n5f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iywne"]
+resource_local_to_scene = true
+shader = ExtResource("2_n6n5f")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_p57ef")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1fef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8p7u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gcm2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n6n5f")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_n6n5f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2da40"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgklo"]
+_data = {
+&"RESET": SubResource("Animation_n6n5f"),
+&"spawn": SubResource("Animation_2da40")
+}
+
+[node name="Tomb" type="StaticBody2D" unique_id=497381214]
+collision_mask = 0
+script = ExtResource("1_c0yju")
+move_speed = 16.0
+max_life = 4
+max_y = 192
+price = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116848025]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(8, 12)
+texture = SubResource("GradientTexture2D_s1fef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=692423970]
+visible = false
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_s1fef")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=491821641]
+material = SubResource("ShaderMaterial_iywne")
+position = Vector2(8, 8)
+scale = Vector2(1e-05, 1e-05)
+sprite_frames = SubResource("SpriteFrames_s1fef")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1355563696]
+libraries/ = SubResource("AnimationLibrary_lgklo")

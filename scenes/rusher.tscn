@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://8fsqad20hwto"]
+
+[ext_resource type="Script" uid="uid://c512jo5f5fyjl" path="res://scripts/rusher.gd" id="1_asybb"]
+[ext_resource type="Texture2D" uid="uid://bp4h0a3u0nwne" path="res://sprites/rusher.png" id="1_coh01"]
+[ext_resource type="Shader" uid="uid://dxo3cunimsmrw" path="res://shaders/glow.gdshader" id="2_62gys"]
+
+[sub_resource type="Gradient" id="Gradient_62gys"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_coh01"]
+gradient = SubResource("Gradient_62gys")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oslh"]
+resource_local_to_scene = true
+shader = ExtResource("2_62gys")
+shader_parameter/enabled = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1fef"]
+atlas = ExtResource("1_coh01")
+region = Rect2(8, 0, 16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_coh01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_asybb"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62gys"]
+_data = {
+&"RESET": SubResource("Animation_coh01"),
+&"walk": SubResource("Animation_asybb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asybb"]
+radius = 4.0
+
+[node name="Rusher" type="CharacterBody2D" unique_id=1814913541 groups=["rusher"]]
+collision_layer = 8
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_asybb")
+move_speed = 160.0
+max_life = 3
+price = 200
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=560509878]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(8, 12)
+texture = SubResource("GradientTexture2D_coh01")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=336015730]
+self_modulate = Color(0.94509804, 0.6627451, 0.43137255, 1)
+material = SubResource("ShaderMaterial_2oslh")
+position = Vector2(8, 11.999998)
+texture = SubResource("AtlasTexture_s1fef")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=804821827]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_s1fef")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=963854414]
+libraries/ = SubResource("AnimationLibrary_62gys")
+autoplay = &"walk"
+
+[node name="KillAllTomb" type="Area2D" parent="." unique_id=1837111854]
+position = Vector2(8, 8)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillAllTomb" unique_id=1733178729]
+shape = SubResource("CircleShape2D_asybb")
+debug_color = Color(0.7, 0, 0.011666489, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=52985711]
+rect = Rect2(0, 16, 16, 16)
+
+[connection signal="body_entered" from="KillAllTomb" to="." method="_on_kill_all_tomb_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

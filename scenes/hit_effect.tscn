@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bjnd726gmy312"]
+
+[sub_resource type="Gradient" id="Gradient_4m0em"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_khhxn"]
+gradient = SubResource("Gradient_4m0em")
+width = 1
+height = 4
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bowr3"]
+offsets = PackedFloat32Array(0, 0.36551723, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_4m0em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_flhpc"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huqvv"]
+_data = {
+&"RESET": SubResource("Animation_4m0em"),
+&"new_animation": SubResource("Animation_flhpc")
+}
+
+[node name="HitEffect" type="CPUParticles2D" unique_id=1670538282]
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_khhxn")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+color_ramp = SubResource("Gradient_bowr3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1351118438]
+libraries/ = SubResource("AnimationLibrary_huqvv")
+autoplay = &"new_animation"
