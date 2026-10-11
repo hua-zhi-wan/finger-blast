@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://0465kiq7h5ot"]
+
+[ext_resource type="Script" uid="uid://b615fq00xiwt3" path="res://scripts/power_up.gd" id="1_npcpg"]
+
+[sub_resource type="Gradient" id="Gradient_m1v21"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7my0"]
+gradient = SubResource("Gradient_m1v21")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_j7my0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ig136"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6iuya"]
+_data = {
+&"RESET": SubResource("Animation_j7my0"),
+&"idle": SubResource("Animation_ig136")
+}
+
+[node name="Buff" type="Area2D" unique_id=2897627]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_npcpg")
+move_speed = 60.0
+price = 200
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=170227322]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(0, 5)
+texture = SubResource("GradientTexture2D_j7my0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1110205918]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1634476063]
+shape = SubResource("RectangleShape2D_s1fef")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1761414097]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1032156404]
+libraries/ = SubResource("AnimationLibrary_6iuya")
+autoplay = &"idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

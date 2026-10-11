@@ -2,17 +2,20 @@
 
 [ext_resource type="Script" uid="uid://hae7cth1kbh8" path="res://scripts/hand.gd" id="1_k7pjy"]
 [ext_resource type="PackedScene" uid="uid://dt0vvbrqu4sd6" path="res://scenes/bullet.tscn" id="2_m1v21"]
-[ext_resource type="Texture2D" uid="uid://csfarogdodhhn" path="res://sprites/hand.png" id="3_kdemd"]
 [ext_resource type="Shader" uid="uid://w827ph706iub" path="res://shaders/dissolve.gdshader" id="3_m1v21"]
+[ext_resource type="Texture2D" uid="uid://dm8wrriuj4wnj" path="res://sprites/hand1.png" id="5_ligq1"]
+[ext_resource type="Texture2D" uid="uid://bql5d50ko452t" path="res://sprites/hand2.png" id="5_yinqy"]
+[ext_resource type="Texture2D" uid="uid://d18u58i21w8xf" path="res://sprites/hand3.png" id="6_ligq1"]
+[ext_resource type="Texture2D" uid="uid://bko76utohdy3s" path="res://sprites/hand4.png" id="7_y1wyv"]
 
-[sub_resource type="Gradient" id="Gradient_m1v21"]
+[sub_resource type="Gradient" id="Gradient_yinqy"]
 interpolation_mode = 1
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 metadata/_snap_enabled = true
 metadata/_snap_count = 16
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_k7pjy"]
-gradient = SubResource("Gradient_m1v21")
+gradient = SubResource("Gradient_yinqy")
 width = 16
 height = 8
 fill = 1
@@ -46,10 +49,34 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_kdemd")
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_kdemd")
+"texture": ExtResource("6_ligq1")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"fan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y1wyv")
+}],
+"loop": 1,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yinqy")
+}],
+"loop": 1,
+"name": &"precise",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ligq1")
+}],
+"loop": 0,
+"name": &"swift",
 "speed": 5.0
 }]
 
@@ -158,7 +185,7 @@ _data = {
 &"shoot": SubResource("Animation_m1v21")
 }
 
-[node name="Hand" type="CharacterBody2D" unique_id=126718059 node_paths=PackedStringArray("camera") groups=["hand"]]
+[node name="Hand" type="CharacterBody2D" unique_id=126718059 node_paths=PackedStringArray("camera", "marker_melee", "marker_2", "marker_3") groups=["hand"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_k7pjy")
@@ -166,7 +193,14 @@ camera = NodePath("Camera2D")
 move_speed = 160.0
 bullet_prefab = ExtResource("2_m1v21")
 min_y = 160.0
-fire_cooldown = 0.1
+fire_cooldown = 0.15
+swift_fire_cooldown = 0.09
+precise_fire_cooldown = 0.12
+fan_fire_cooldown = 0.3
+melee_fire_cooldown = 0.05
+marker_melee = NodePath("Marker2D0")
+marker_2 = NodePath("Marker2D2")
+marker_3 = NodePath("Marker2D3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=422978304]
 self_modulate = Color(0.1, 0.1, 0.1, 1)
@@ -187,13 +221,20 @@ shape = SubResource("RectangleShape2D_s1fef")
 debug_color = Color(0.011666656, 0.7, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1561403671]
-self_modulate = Color(0.34117648, 0.69803923, 1, 1)
 material = SubResource("ShaderMaterial_kdemd")
 position = Vector2(10, 8)
 sprite_frames = SubResource("SpriteFrames_khhxn")
+animation = &"precise"
+autoplay = "swift"
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1563520343]
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1563520343]
 position = Vector2(9, 3)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1675704828]
+position = Vector2(11, 2)
+
+[node name="Marker2D0" type="Marker2D" parent="." unique_id=980648953]
+position = Vector2(10, 9)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=372311690]
 libraries/ = SubResource("AnimationLibrary_kdemd")
@@ -205,5 +246,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 320
 limit_bottom = 240
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]

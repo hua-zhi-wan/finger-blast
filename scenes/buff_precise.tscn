@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dvmaiqwvqpb7t"]
+
+[ext_resource type="PackedScene" uid="uid://0465kiq7h5ot" path="res://scenes/buff.tscn" id="1_oot7p"]
+[ext_resource type="Texture2D" uid="uid://bql5d50ko452t" path="res://sprites/hand2.png" id="2_0sqnt"]
+
+[node name="Buff" unique_id=2897627 instance=ExtResource("1_oot7p")]
+buff = &"precise"
+
+[node name="Sprite2D" parent="." index="1" unique_id=1110205918]
+texture = ExtResource("2_0sqnt")

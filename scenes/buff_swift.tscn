@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://blddrvm743eyd"]
+
+[ext_resource type="PackedScene" uid="uid://0465kiq7h5ot" path="res://scenes/buff.tscn" id="1_mtnr7"]
+[ext_resource type="Texture2D" uid="uid://dm8wrriuj4wnj" path="res://sprites/hand1.png" id="2_ltuk5"]
+
+[node name="Buff" unique_id=2897627 instance=ExtResource("1_mtnr7")]
+buff = &"swift"
+
+[node name="Sprite2D" parent="." index="1" unique_id=1110205918]
+texture = ExtResource("2_ltuk5")

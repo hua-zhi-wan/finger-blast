@@ -19,20 +19,24 @@ var tomb_queue: Array[Vector2] = []
 
 @export var wave_label: Label
 @export var score_label: Label
+@export var buff_label: Label
 
-var wave_index := 1
+var wave_index := 0
 var score := 0
 
 @onready var hand = get_tree().get_first_node_in_group('hand') as Hand
+var buff: StringName = &""
+var buff_timer: float
 
 
 func _ready() -> void:
+	remove_buff()
+	Engine.time_scale = 1
 	await fill_tomb(tomb_count)
 	$MainTimer.start()
-	Engine.time_scale = 1
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Tomb Generate
 	while not tomb_queue.is_empty():
 		var tomb = tomb_prefab.instantiate() as Tomb
@@ -71,6 +75,11 @@ func _process(_delta: float) -> void:
 		swinger.move_horizontal_direction = -horizontal_position
 		swinger.move_vertical_diretion = [-1, 1].pick_random()
 		swinger_queue -= 1
+	if buff_timer > 0:
+		buff_timer -= delta
+		buff_label.text = "%s:%d" % [buff.to_upper(), ceili(buff_timer)]
+		if buff_timer <= 0:
+			remove_buff()
 
 
 func fill_tomb(n: int):
@@ -107,11 +116,26 @@ func get_score(v: int):
 		, 2.0, 0, 0.05)
 
 
+func get_buff(buff_name: StringName):
+	buff = buff_name
+	buff_timer = 8
+
+
+func remove_buff():
+	buff = &""
+	buff_timer = 0
+	buff_label.text = ""
+
+
 func _wave() -> void:
-	if not $Enemies.get_children().is_empty():
+	var enemy_count = 0
+	for tag in ['soldier', 'rusher', 'swinger', 'cleaner']:
+		enemy_count += get_tree().get_node_count_in_group(tag)
+	if enemy_count > 0:
 		return
+	wave_index += 1
 	if wave_index > 1:
-		Engine.time_scale += 0.02
+		Engine.time_scale = clampf(Engine.time_scale + 0.02, 1, 1.8)
 		wave_label.text = "WAVE:%d" % wave_index
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
@@ -131,18 +155,18 @@ func _wave() -> void:
 	if total_tomb < tomb_count * 0.5:
 		await fill_tomb(tomb_count - total_tomb)
 	
-	
-	for i in range(randi_range(4, 8) + wave_index):
+	var soldier_count = range(randi_range(4, 8) + wave_index)
+	var buff_index = soldier_count.pick_random()
+	for i in soldier_count:
 		var soldier = soldier_prefab.instantiate() as Soldier
 		$Enemies.add_child(soldier)
 		soldier.global_position = target_position
 		soldier.move_horizontal_direction = direction
+		soldier.has_buff = i == buff_index
 		await get_tree().create_timer(16.0 / soldier.move_speed).timeout
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.start()
-	
-	wave_index += 1
 
 
 func _on_timer_timeout() -> void:
@@ -150,17 +174,25 @@ func _on_timer_timeout() -> void:
 
 
 func _on_rusher_timer_timeout() -> void:
-	if get_tree().get_node_count_in_group('soldier') > 0:
-		if rusher_queue + get_tree().get_node_count_in_group('rusher') <= 0:
-			rusher_queue += 1
+	if wave_index >= 2:
+		if get_tree().get_node_count_in_group('soldier') > 0:
+			var max_rusher = 1
+			if rusher_queue + get_tree().get_node_count_in_group('rusher') < max_rusher:
+				rusher_queue += 1
 
 
 func _on_cleaner_timer_timeout() -> void:
-	if get_tree().get_node_count_in_group('soldier') > 0:
-		cleaner_queue += 1
+	if wave_index >= 3:
+		if get_tree().get_node_count_in_group('soldier') > 0:
+			cleaner_queue += 1
 
 
 func _on_swinger_timer_timeout() -> void:
 	if get_tree().get_node_count_in_group('soldier') > 0:
-		if get_tree().get_node_count_in_group('swinger') <= 1:
+		var max_swinger = 0
+		if wave_index >= 4:
+			max_swinger += 1
+		if wave_index >= 8:
+			max_swinger += 1
+		if get_tree().get_node_count_in_group('swinger') < max_swinger:
 			swinger_queue += 1

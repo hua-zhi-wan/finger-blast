@@ -78,7 +78,7 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_lmdea")
 move_speed = 128.0
-max_life = 4
+max_life = 3
 price = 200
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1752331242]

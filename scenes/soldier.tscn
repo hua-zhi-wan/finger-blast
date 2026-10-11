@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://cjdgr5766tivy" path="res://scripts/soldier.gd" id="1_0vpqw"]
 [ext_resource type="Shader" uid="uid://dxo3cunimsmrw" path="res://shaders/glow.gdshader" id="1_2oslh"]
 [ext_resource type="Texture2D" uid="uid://dnkhpxwecnh2e" path="res://sprites/soldier.png" id="1_af1c2"]
+[ext_resource type="PackedScene" uid="uid://dvmaiqwvqpb7t" path="res://scenes/buff_precise.tscn" id="2_x21nm"]
+[ext_resource type="PackedScene" uid="uid://blddrvm743eyd" path="res://scenes/buff_swift.tscn" id="3_hpa1h"]
+[ext_resource type="PackedScene" uid="uid://dgvwtc1irwjh3" path="res://scenes/buff_fan.tscn" id="4_50ktg"]
+[ext_resource type="PackedScene" uid="uid://c2x7r1i3m1i4s" path="res://scenes/buff_melee.tscn" id="5_8qfth"]
 
 [sub_resource type="Gradient" id="Gradient_2oslh"]
 interpolation_mode = 1
@@ -73,6 +77,7 @@ radius = 4.0
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_0vpqw")
+buff_list = Array[PackedScene]([ExtResource("4_50ktg"), ExtResource("5_8qfth"), ExtResource("2_x21nm"), ExtResource("3_hpa1h")])
 move_speed = 80.0
 max_life = 2
 price = 50

@@ -2,10 +2,16 @@ extends Enemy
 class_name Soldier
 
 
+@export var buff_list: Array[PackedScene]
+
+
 var move_horizontal_direction: int = 1
 var move_vertical_direction: int = 1
 var is_vertical_walk: bool
 var target_y = 0
+
+var has_buff: bool
+var color_h: float = 0
 
 
 func _process(delta: float) -> void:
@@ -39,3 +45,14 @@ func _process(delta: float) -> void:
 			global_position.y = target_y
 	
 	move_and_collide(move_speed * move_direction * delta)
+	
+	if has_buff:
+		color_h += delta
+		$Sprite2D.self_modulate.h = (sin(color_h) + 1) / 0.5
+
+
+func when_dead():
+	if has_buff:
+		var buff = buff_list.pick_random().instantiate() as Area2D
+		get_parent().add_child(buff)
+		buff.global_position = self.global_position + Vector2(8, 8)

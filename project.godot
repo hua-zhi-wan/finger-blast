@@ -12,27 +12,35 @@ config_version=5
 
 config/name="Finger Blast"
 run/main_scene="uid://brcuy5ck64j6n"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="fingerblast"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=300
 config/icon="uid://ccdv5c2xpp1lo"
 config/windows_native_icon="res://theme/favicon.ico"
 
+[audio]
+
+buses/default_bus_layout="uid://b1pynbmmc2q1l"
+
 [autoload]
 
 SE="*uid://dfi2c6f0hcote"
 Global="*uid://dntx12j5qtxdi"
+CheddaBoards="*uid://cutg827n3uxvt"
+RankingBoard="*uid://bd7ipnvs75eq0"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=240
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/handheld/orientation=4
 window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg")
+enabled=PackedStringArray("res://addons/cheddaboards/plugin.cfg", "res://addons/gdfxr/plugin.cfg")
 
 [global_group]
 

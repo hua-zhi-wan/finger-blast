@@ -99,7 +99,7 @@ collision_mask = 0
 script = ExtResource("1_3ynh5")
 move_speed = 96.0
 max_life = 3
-price = 200
+price = 250
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1752331242]
 self_modulate = Color(0.1, 0.1, 0.1, 1)

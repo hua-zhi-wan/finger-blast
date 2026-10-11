@@ -18,7 +18,7 @@ size = Vector2(64, 336)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khhxn"]
 size = Vector2(64, 336)
 
-[node name="Game" type="Node2D" unique_id=1431383158 node_paths=PackedStringArray("wave_label", "score_label") groups=["game"]]
+[node name="Game" type="Node2D" unique_id=1431383158 node_paths=PackedStringArray("wave_label", "score_label", "buff_label") groups=["game"]]
 y_sort_enabled = true
 script = ExtResource("1_yqjtg")
 tomb_prefab = ExtResource("2_yqjtg")
@@ -29,7 +29,9 @@ swinger_prefab = ExtResource("6_u5sy4")
 tomb_count = 50
 wave_label = NodePath("UI/WaveCount")
 score_label = NodePath("UI/ScoreCount")
+buff_label = NodePath("UI/BuffShow")
 metadata/_edit_horizontal_guides_ = [160.0, 192.0]
+metadata/_edit_vertical_guides_ = [8.0, 312.0]
 
 [node name="Control" type="Control" parent="." unique_id=485304656]
 layout_mode = 3
@@ -74,6 +76,14 @@ offset_transform_pivot_ratio = Vector2(1, 1)
 text = "0"
 label_settings = SubResource("LabelSettings_s1fef")
 horizontal_alignment = 2
+
+[node name="BuffShow" type="Label" parent="UI" unique_id=1525892831]
+offset_left = 8.0
+offset_right = 120.0
+offset_bottom = 16.0
+text = "BUFF:0"
+label_settings = SubResource("LabelSettings_s1fef")
+vertical_alignment = 2
 
 [node name="Hand" parent="." unique_id=126718059 instance=ExtResource("1_uwrxv")]
 position = Vector2(151, 196)

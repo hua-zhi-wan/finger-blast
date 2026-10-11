@@ -28,6 +28,7 @@ func hurt():
 	SE.play_sound("HitEnemy")
 	if life <= 0:
 		game.tomb_queue.append((global_position / 16).round() * 16)
+		when_dead.call_deferred()
 		queue_free()
 		SE.play_sound("KillEnemy")
 		var scoreup = ScoreUp.create()
@@ -36,6 +37,10 @@ func hurt():
 		scoreup.score = price
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.material.set_shader_parameter('enabled', false)
+
+
+func when_dead():
+	pass
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

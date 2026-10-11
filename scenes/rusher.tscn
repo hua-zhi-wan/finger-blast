@@ -107,6 +107,7 @@ position = Vector2(8, 8)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillAllTomb" unique_id=1733178729]
+position = Vector2(0, 16)
 shape = SubResource("CircleShape2D_asybb")
 debug_color = Color(0.7, 0, 0.011666489, 0.41960785)
 
