@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://ctyt3701vp77o"]
+
+[ext_resource type="Script" uid="uid://dvfnvsugissxe" path="res://scripts/title_enemy.gd" id="1_3a7kc"]
+[ext_resource type="Texture2D" uid="uid://dnkhpxwecnh2e" path="res://sprites/soldier.png" id="1_r8olt"]
+[ext_resource type="Texture2D" uid="uid://bp4h0a3u0nwne" path="res://sprites/rusher.png" id="3_h10da"]
+
+[sub_resource type="Gradient" id="Gradient_62gys"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r8olt"]
+gradient = SubResource("Gradient_62gys")
+width = 16
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.625)
+fill_to = Vector2(0.875, 0.875)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="Animation" id="Animation_coh01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShadowSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h10da"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 14), Vector2(8, 6), Vector2(8, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 14), Vector2(8, 6), Vector2(8, 14)]
+}
+
+[sub_resource type="Animation" id="Animation_asybb"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3a7kc"]
+_data = {
+&"RESET": SubResource("Animation_coh01"),
+&"jump": SubResource("Animation_h10da"),
+&"walk": SubResource("Animation_asybb")
+}
+
+[node name="TitleEnemy" type="Node2D" unique_id=1975894595]
+script = ExtResource("1_3a7kc")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=181248423]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+position = Vector2(8, 12)
+texture = SubResource("GradientTexture2D_r8olt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=83884543]
+position = Vector2(8, 14)
+texture = ExtResource("3_h10da")
+offset = Vector2(0, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204501678]
+position = Vector2(8, 14)
+texture = ExtResource("1_r8olt")
+offset = Vector2(0, -6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=831898681]
+libraries/ = SubResource("AnimationLibrary_3a7kc")
+autoplay = &"walk"

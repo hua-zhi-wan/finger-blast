@@ -86,17 +86,32 @@ func _process(delta: float) -> void:
 
 
 func dead():
-	Engine.time_scale = 0.1
-	is_dead = true
-	$Camera2D.limit_bottom += 16
-	$AnimationPlayer.play("dead")
-	SE.play_sound("HandHit")
-	await $AnimationPlayer.animation_finished
-	Engine.time_scale = 1
-	if is_inside_tree():
-		get_tree().change_scene_to_file("res://scenes/title.tscn")
-	else:
-		print_debug(game)
+	if not is_dead:
+		var origin_time_scale = Engine.time_scale
+		
+		Engine.time_scale = 0.1
+		is_dead = true
+		$HurtArea.set_deferred("monitoring", false)
+		$Camera2D.limit_bottom += 16
+		$AnimationPlayer.play("dead")
+		SE.play_sound("HandHit")
+		
+		await $AnimationPlayer.animation_finished
+		Engine.time_scale = origin_time_scale
+		if game.heart > 1:
+			game.heart -= 1
+			game.update_heart()
+		else:
+			if is_inside_tree():
+				get_tree().change_scene_to_file("res://scenes/title.tscn")
+		
+		$AnimationPlayer.play("revive")
+		await $AnimationPlayer.animation_finished
+		is_dead = false
+		$Camera2D.limit_bottom -= 16
+		await get_tree().create_timer(3).timeout
+		$HurtArea.set_deferred("monitoring", true)
+		
 
 
 func _dead_sound():

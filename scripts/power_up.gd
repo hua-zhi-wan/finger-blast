@@ -35,6 +35,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	game.get_buff(buff)
+	SE.play_sound("Buff")
 	var scoreup = ScoreUp.create()
 	game.add_child(scoreup)
 	scoreup.global_position = global_position

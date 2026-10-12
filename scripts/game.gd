@@ -28,8 +28,15 @@ var score := 0
 var buff: StringName = &""
 var buff_timer: float
 
+@export var heart_container: Container
+@export var heart_node: Control
+@export var heart_label: Label
+var heart: int = 3
+
 
 func _ready() -> void:
+	heart_node.get_parent().remove_child(heart_node)
+	update_heart()
 	remove_buff()
 	Engine.time_scale = 1
 	await fill_tomb(tomb_count)
@@ -54,9 +61,9 @@ func _process(delta: float) -> void:
 		var target_position = Vector2()
 		var horizontal_position = [-1, 1].pick_random()
 		if upper:
-			target_position.y = randi_range(2, 10) * 16
+			target_position.y = randi_range(2, 9) * 16
 		else:
-			target_position.y = randi_range(11, 14) * 16
+			target_position.y = randi_range(10, 14) * 16
 			horizontal_position = -1 if hand.global_position.x > 16 * 10 else 1
 		target_position.x = (horizontal_position + 1) * 8 * 19
 		var cleaner = cleaner_prefab.instantiate() as Cleaner
@@ -125,6 +132,18 @@ func remove_buff():
 	buff = &""
 	buff_timer = 0
 	buff_label.text = ""
+
+
+func update_heart():
+	for child: Node in heart_container.get_children():
+		child.queue_free()
+	if heart > 3:
+		heart_label.text = "x%d" % heart
+		heart_container.add_child(heart_node.duplicate())
+	else:
+		heart_label.text = ""
+		for i in range(heart):
+			heart_container.add_child(heart_node.duplicate())
 
 
 func _wave() -> void:
