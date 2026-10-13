@@ -112,7 +112,7 @@ shape = SubResource("CircleShape2D_asybb")
 debug_color = Color(0.7, 0, 0.011666489, 0.41960785)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=52985711]
-position = Vector2(0, 16)
+position = Vector2(0, -16)
 rect = Rect2(0, 16, 16, 16)
 
 [connection signal="body_entered" from="KillAllTomb" to="." method="_on_kill_all_tomb_body_entered"]

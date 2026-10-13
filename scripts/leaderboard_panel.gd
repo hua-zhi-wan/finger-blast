@@ -6,6 +6,7 @@ extends Control
 @export var nickname_line_edit: LineEdit
 @export var button_submit: Button
 @export var button_refresh: Button
+@export var button_close: Button
 @export var tab_container: TabContainer
 @export var scroll_weekly: ScrollContainer
 @export var leaderboard_weekly_grid: GridContainer
@@ -16,14 +17,26 @@ extends Control
 
 
 func _ready() -> void:
+	SE.in_game(true)
+	for button: Button in [button_close, button_refresh, button_submit]:
+		button.focus_entered.connect(SE.play_sound.bind("Click"))
+		button.mouse_entered.connect(SE.play_sound.bind("Click"))
+		button.pressed.connect(SE.play_sound.bind("Press"))
+	tab_container.tab_hovered.connect(func(_i): SE.play_sound("Click"))
+	tab_container.tab_changed.connect(func(_i): SE.play_sound("Press"))
+	
 	[title1, title2][1 if Global.need_submit else 0].hide()
 	if not Global.need_submit:
 		button_submit.hide()
 		nickname_line_edit.hide()
-	
+
+	button_close.grab_focus()
+	button_close.disabled = true
 	button_submit.disabled = true
 	button_refresh.disabled = true
 	(func ():
+		await get_tree().create_timer(1).timeout
+		button_close.disabled = false
 		await get_tree().create_timer(10).timeout
 		button_refresh.disabled = false).call()
 	
@@ -73,14 +86,18 @@ func _ready() -> void:
 			for label: Label in grid.get_children():
 				if label and label.text.contains(Global.nickname):
 					target_label = label
-					print_debug("Find Target label.")
+					print_debug("Find Target label.", target_label)
 					break
 		if target_label:
 			scroll.set_deferred("scroll_vertical", target_label.position.y - 15 * 4)
 	
 		tab_container.current_tab = original_tab
 	
-	nickname_line_edit.grab_focus()
+	if Global.need_submit:
+		if Global.nickname:
+			nickname_line_edit.grab_focus()
+		else:
+			button_submit.grab_focus()
 	button_submit.disabled = false
 
 
@@ -124,19 +141,18 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		var caret_column = nickname_line_edit.caret_column
 		nickname_line_edit.text = real_nickname
 		nickname_line_edit.caret_column = caret_column
-	else:
-		Global.nickname = new_text
 
 
 func _on_button_submit_pressed() -> void:
 	if nickname_line_edit.text:
+		Global.nickname = nickname_line_edit.text
 		if Global.nickname and CheddaBoards.get_nickname() != Global.nickname:
 			CheddaBoards.change_nickname(Global.nickname)
 		LeaderboardManager.submit_score(Global.score)
-		button_submit.text = "WAITING"
+		button_submit.text = tr("WAITING")
 		button_submit.disabled = true
 		await LeaderboardManager.score_submitted
-		button_submit.text = "OK!"
+		button_submit.text = tr("OK!")
 		Global.need_submit = false
 
 

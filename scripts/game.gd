@@ -42,6 +42,8 @@ func _ready() -> void:
 	update_heart()
 	remove_buff()
 	Engine.time_scale = 1
+	SE.in_game(true)
+	
 	await fill_tomb(tomb_count)
 	$MainTimer.start()
 
@@ -167,7 +169,7 @@ func _wave() -> void:
 	wave_index += 1
 	if wave_index > 1:
 		Engine.time_scale = clampf(Engine.time_scale + 0.02, 1, 1.8)
-		wave_label.text = "WAVE:%d" % wave_index
+		wave_label.text = "%s:%d" % [tr("WAVE"), wave_index]
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.stop()

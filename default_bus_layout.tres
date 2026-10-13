@@ -5,6 +5,35 @@ resource_name = "Limiter"
 ceiling_db = -1.0
 threshold_db = -3.0
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -12.0
+ratio = 2.0
+release_ms = 50.0
+sidechain = &"Master"
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_j3pel"]
+resource_name = "EQ6"
+band_db/320_hz = -10.0
+band_db/1000_hz = -20.0
+band_db/3200_hz = -15.0
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
 bus/0/effect/0/enabled = true
+bus/1/name = &"BUS"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/0/enabled = true
+bus/2/name = &"BGM"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"BUS"
+bus/2/effect/0/effect = SubResource("AudioEffectEQ6_j3pel")
+bus/2/effect/0/enabled = true

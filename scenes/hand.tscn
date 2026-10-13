@@ -253,7 +253,7 @@ debug_color = Color(0.011666656, 0.7, 0, 0.41960785)
 material = SubResource("ShaderMaterial_kdemd")
 position = Vector2(10, 8)
 sprite_frames = SubResource("SpriteFrames_khhxn")
-animation = &"precise"
+animation = &"fan"
 autoplay = "swift"
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1563520343]

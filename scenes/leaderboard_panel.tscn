@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://cw1jixsvd3000" path="res://scripts/leaderboard_panel.gd" id="2_qcv18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s1fef"]
-font_size = 18
+font_size = 20
 stacked_shadow_count = 1
 stacked_shadow_0/offset = Vector2(2, 2)
 
-[node name="LeaderboardPanel" type="Control" unique_id=698722433 node_paths=PackedStringArray("title1", "title2", "nickname_line_edit", "button_submit", "button_refresh", "tab_container", "scroll_weekly", "leaderboard_weekly_grid", "scroll_all_time", "leaderboard_all_time_grid")]
+[node name="LeaderboardPanel" type="Control" unique_id=698722433 node_paths=PackedStringArray("title1", "title2", "nickname_line_edit", "button_submit", "button_refresh", "button_close", "tab_container", "scroll_weekly", "leaderboard_weekly_grid", "scroll_all_time", "leaderboard_all_time_grid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,7 @@ title2 = NodePath("Label2")
 nickname_line_edit = NodePath("LineEdit")
 button_submit = NodePath("ButtonSubmit")
 button_refresh = NodePath("ButtonRefresh")
+button_close = NodePath("ButtonClose")
 tab_container = NodePath("TabContainer")
 scroll_weekly = NodePath("TabContainer/WeeklyContainer/ScrollContainer")
 leaderboard_weekly_grid = NodePath("TabContainer/WeeklyContainer/ScrollContainer/Weekly")

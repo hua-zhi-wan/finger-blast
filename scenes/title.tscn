@@ -116,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 8), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -161,7 +161,7 @@ _data = {
 &"loop": SubResource("Animation_pyl7j")
 }
 
-[node name="Title" type="Control" unique_id=1165852687]
+[node name="Title" type="Control" unique_id=1165852687 node_paths=PackedStringArray("button_play", "button_fullscreen", "button_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,6 +170,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_b3w7a")
 script = ExtResource("1_4ignj")
+button_play = NodePath("Control/ButtonPlay")
+button_fullscreen = NodePath("Control/ButtonFullScreen")
+button_sound = NodePath("Control/ButtonSound")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=336782730]
 layout_mode = 1
@@ -180,6 +184,7 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1004493885]
 layout_mode = 1
@@ -190,16 +195,17 @@ offset_top = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1446340721]
 position = Vector2(160, 96)
 emitting = false
-amount = 80
+amount = 160
 texture = SubResource("GradientTexture2D_s1fef")
 lifetime = 0.99
 one_shot = true
 preprocess = 0.2
-explosiveness = 0.8
+explosiveness = 0.4
 direction = Vector2(0, 1)
 spread = 160.0
 gravity = Vector2(0, 500)
@@ -218,23 +224,59 @@ scale_curve_y = SubResource("Curve_yql1r")
 color_ramp = SubResource("Gradient_ia1n6")
 color_initial_ramp = SubResource("Gradient_b3w7a")
 
+[node name="Enemies" type="Node2D" parent="." unique_id=1116914582]
+metadata/_edit_lock_ = true
+
+[node name="TitleEnemy" parent="Enemies" unique_id=1975894595 instance=ExtResource("4_pyl7j")]
+modulate = Color(1, 0.92941177, 0.6313726, 1)
+position = Vector2(16, 80)
+
+[node name="TitleEnemy2" parent="Enemies" unique_id=1443401053 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.32156864, 0.654902, 0.93333334, 1)
+position = Vector2(272, 64)
+
+[node name="TitleEnemy6" parent="Enemies" unique_id=1264150632 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.9882353, 0.54509807, 0.7921569, 1)
+position = Vector2(32, 192)
+
+[node name="TitleEnemy7" parent="Enemies" unique_id=533959459 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.54901963, 0.54901963, 0.54901963, 1)
+position = Vector2(256, 128)
+
+[node name="TitleEnemy3" parent="Enemies" unique_id=657284179 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.56078434, 1, 0.85882354, 1)
+position = Vector2(48, 128)
+
+[node name="TitleEnemy4" parent="Enemies" unique_id=1677587983 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.9843137, 0.6901961, 0.44705883, 1)
+position = Vector2(96, 16)
+
+[node name="TitleEnemy8" parent="Enemies" unique_id=1337343024 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.56078434, 0.6627451, 0.7490196, 1)
+position = Vector2(192, 16)
+
+[node name="TitleEnemy5" parent="Enemies" unique_id=349315646 instance=ExtResource("4_pyl7j")]
+modulate = Color(0.34117648, 0.6509804, 0.30588236, 1)
+position = Vector2(272, 192)
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=495502465]
 layout_mode = 0
 offset_left = 32.0
-offset_top = 32.0
+offset_top = 16.0
 offset_right = 288.0
-offset_bottom = 160.0
+offset_bottom = 144.0
 offset_transform_enabled = true
 texture = ExtResource("3_p6dhs")
+metadata/_edit_lock_ = true
 
 [node name="Text" type="Label" parent="." unique_id=1311955513]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -48.0
-offset_top = 128.0
-offset_right = 144.0
+offset_left = -16.0
+offset_top = 112.0
+offset_right = 112.0
 offset_bottom = 160.0
 grow_horizontal = 2
 offset_transform_enabled = true
@@ -260,36 +302,6 @@ texture = SubResource("GradientTexture2D_wosw1")
 libraries/ = SubResource("AnimationLibrary_b3w7a")
 autoplay = &"loop"
 
-[node name="Enemies" type="Node2D" parent="." unique_id=1116914582]
-
-[node name="TitleEnemy" parent="Enemies" unique_id=1975894595 instance=ExtResource("4_pyl7j")]
-modulate = Color(1, 0.92941177, 0.6313726, 1)
-position = Vector2(16, 80)
-
-[node name="TitleEnemy2" parent="Enemies" unique_id=1443401053 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.32156864, 0.654902, 0.93333334, 1)
-position = Vector2(256, 32)
-
-[node name="TitleEnemy6" parent="Enemies" unique_id=1264150632 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.9882353, 0.54509807, 0.7921569, 1)
-position = Vector2(32, 176)
-
-[node name="TitleEnemy7" parent="Enemies" unique_id=533959459 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.7764706, 0.7764706, 0.7764706, 1)
-position = Vector2(48, 128)
-
-[node name="TitleEnemy3" parent="Enemies" unique_id=657284179 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.56078434, 1, 0.85882354, 1)
-position = Vector2(288, 112)
-
-[node name="TitleEnemy4" parent="Enemies" unique_id=1677587983 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.9843137, 0.6901961, 0.44705883, 1)
-position = Vector2(112, 16)
-
-[node name="TitleEnemy5" parent="Enemies" unique_id=349315646 instance=ExtResource("4_pyl7j")]
-modulate = Color(0.34117648, 0.6509804, 0.30588236, 1)
-position = Vector2(272, 176)
-
 [node name="Control" type="Control" parent="." unique_id=1294212438]
 layout_mode = 1
 anchors_preset = 7
@@ -302,6 +314,7 @@ offset_top = -80.0
 offset_right = 96.0
 grow_horizontal = 2
 grow_vertical = 0
+metadata/_edit_lock_ = true
 
 [node name="ButtonPlay" type="Button" parent="Control" unique_id=538582645]
 layout_mode = 0
@@ -309,7 +322,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 80.0
 offset_bottom = 35.0
-text = "Play Now!"
+text = "Blast!"
 
 [node name="ButtonRanking" type="Button" parent="Control" unique_id=1008288210]
 layout_mode = 0

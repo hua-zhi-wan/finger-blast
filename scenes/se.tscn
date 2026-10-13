@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfi2c6f0hcote"]
 
 [ext_resource type="Script" uid="uid://ds8phcat2a2eu" path="res://scripts/se.gd" id="1_w4iuk"]
+[ext_resource type="AudioStream" uid="uid://kby5v4gqsmbk" path="res://sounds/15. Rush Point.mp3" id="2_opgxh"]
 [ext_resource type="AudioStream" uid="uid://hx7nrqgcsvp6" path="res://sounds/shoot.sfxr" id="2_qm5g3"]
 [ext_resource type="AudioStream" uid="uid://ch8do6jqfig17" path="res://sounds/hit_tomb.sfxr" id="3_xosq1"]
 [ext_resource type="AudioStream" uid="uid://d3kx4t1ufk3js" path="res://sounds/hit_enemy.sfxr" id="4_kh3bp"]
@@ -12,47 +13,75 @@
 [ext_resource type="AudioStream" uid="uid://fy7pbd4go6er" path="res://sounds/buff.sfxr" id="10_hj8gq"]
 [ext_resource type="AudioStream" uid="uid://upo0mrdjfvd3" path="res://sounds/jump.sfxr" id="11_6ltun"]
 [ext_resource type="AudioStream" uid="uid://doa0yospoye6x" path="res://sounds/heart_up.sfxr" id="12_yddo4"]
+[ext_resource type="AudioStream" uid="uid://c4qckaffcjqka" path="res://sounds/click.sfxr" id="13_rmo43"]
+[ext_resource type="AudioStream" uid="uid://cwu6gjq51gifv" path="res://sounds/press.sfxr" id="14_dsavd"]
 
 [node name="SE" type="Node" unique_id=1704279195]
 process_mode = 3
 script = ExtResource("1_w4iuk")
 
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1453098651]
+stream = ExtResource("2_opgxh")
+volume_db = -6.0
+autoplay = true
+bus = &"BGM"
+
 [node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=154645541]
 stream = ExtResource("2_qm5g3")
 volume_db = -9.0
+bus = &"BUS"
 
 [node name="HitTomb" type="AudioStreamPlayer" parent="." unique_id=1390966363]
 stream = ExtResource("3_xosq1")
 volume_db = -3.0
+bus = &"BUS"
 
 [node name="HitEnemy" type="AudioStreamPlayer" parent="." unique_id=700551429]
 stream = ExtResource("4_kh3bp")
 volume_db = -6.0
+bus = &"BUS"
 
 [node name="KillEnemy" type="AudioStreamPlayer" parent="." unique_id=1237581999]
 stream = ExtResource("5_fqfyq")
+bus = &"BUS"
 
 [node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=1978834686]
 stream = ExtResource("6_hjkgk")
+bus = &"BUS"
 
 [node name="HandHit" type="AudioStreamPlayer" parent="." unique_id=1548564214]
 stream = ExtResource("7_fakxf")
+bus = &"BUS"
 
 [node name="Spawn" type="AudioStreamPlayer" parent="." unique_id=1350835865]
 stream = ExtResource("8_1vf2w")
 volume_db = -3.0
+bus = &"BUS"
 
 [node name="Grow" type="AudioStreamPlayer" parent="." unique_id=2005127209]
 stream = ExtResource("9_f5c3n")
 volume_db = -12.0
+bus = &"BUS"
 
 [node name="Buff" type="AudioStreamPlayer" parent="." unique_id=186864965]
 stream = ExtResource("10_hj8gq")
+bus = &"BUS"
 
 [node name="Pause" type="AudioStreamPlayer" parent="." unique_id=1328881553]
 stream = ExtResource("11_6ltun")
+bus = &"BUS"
 
 [node name="HeartUp" type="AudioStreamPlayer" parent="." unique_id=1005276719]
 stream = ExtResource("12_yddo4")
+bus = &"BUS"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=927350548]
+stream = ExtResource("13_rmo43")
+bus = &"BUS"
+
+[node name="Press" type="AudioStreamPlayer" parent="." unique_id=195140563]
+stream = ExtResource("14_dsavd")
+bus = &"BUS"
 
 [node name="Empty" type="AudioStreamPlayer" parent="." unique_id=1890932868]
+bus = &"BUS"

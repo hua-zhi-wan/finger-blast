@@ -9,17 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://byggyypqf7dwl" path="res://scenes/swinger.tscn" id="6_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://dsp17s0glk6xm" path="res://sprites/heart.png" id="7_gee14"]
 [ext_resource type="Script" uid="uid://drpcs3fgtbtlx" path="res://scripts/pause_rect.gd" id="8_0tnpc"]
+[ext_resource type="Theme" uid="uid://7mv8cw55qtro" path="res://theme/game_theme.tres" id="8_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s1fef"]
-font_size = 9
+font_size = 10
 stacked_shadow_count = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_khhxn"]
-font_size = 9
+font_size = 10
 stacked_shadow_count = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_qsuaf"]
-font_size = 9
+font_size = 10
 stacked_shadow_count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
@@ -138,16 +139,17 @@ text = "x3"
 label_settings = SubResource("LabelSettings_khhxn")
 horizontal_alignment = 2
 
-[node name="PauseRect" type="ColorRect" parent="UI" unique_id=1503315470]
+[node name="PauseRect" type="ColorRect" parent="UI" unique_id=1503315470 node_paths=PackedStringArray("button_resume")]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_vtaks")
 color = Color(0.2, 0.2, 0.2, 0.627451)
 script = ExtResource("8_0tnpc")
+button_resume = NodePath("ButtonResume")
 
 [node name="Label" type="Label" parent="UI/PauseRect" unique_id=1407874293]
 layout_mode = 1
@@ -157,15 +159,45 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = -24.0
+offset_top = -56.0
 offset_right = 96.0
-offset_bottom = 24.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PAUSED"
+text = "- PAUSED -"
 label_settings = SubResource("LabelSettings_qsuaf")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonResume" type="Button" parent="UI/PauseRect" unique_id=1666616689]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME"
+
+[node name="ButtonQuit" type="Button" parent="UI/PauseRect" unique_id=1251556030]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
 
 [node name="Hand" parent="." unique_id=126718059 instance=ExtResource("1_uwrxv")]
 position = Vector2(151, 196)
@@ -204,6 +236,8 @@ wait_time = 3.0
 [node name="SwingerTimer" type="Timer" parent="." unique_id=1332134619 groups=["game_timer"]]
 wait_time = 6.0
 
+[connection signal="pressed" from="UI/PauseRect/ButtonResume" to="UI/PauseRect" method="_on_button_resume_pressed"]
+[connection signal="pressed" from="UI/PauseRect/ButtonQuit" to="UI/PauseRect" method="_on_button_quit_pressed"]
 [connection signal="timeout" from="MainTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RusherTimer" to="." method="_on_rusher_timer_timeout"]
 [connection signal="timeout" from="CleanerTimer" to="." method="_on_cleaner_timer_timeout"]
