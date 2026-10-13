@@ -1,5 +1,8 @@
 extends Control
 
+@export var title1: Label
+@export var title2: Label
+
 @export var nickname_line_edit: LineEdit
 @export var button_submit: Button
 @export var button_refresh: Button
@@ -13,6 +16,11 @@ extends Control
 
 
 func _ready() -> void:
+	[title1, title2][1 if Global.need_submit else 0].hide()
+	if not Global.need_submit:
+		button_submit.hide()
+		nickname_line_edit.hide()
+	
 	button_submit.disabled = true
 	button_refresh.disabled = true
 	(func ():
@@ -25,50 +33,53 @@ func _ready() -> void:
 	if Global.nickname.is_empty():
 		nickname_line_edit.text = CheddaBoards.get_nickname()
 	
-	var weekly_rank = await LeaderboardManager.get_scoreboard("weekly")
-	var all_time_rank = await LeaderboardManager.get_scoreboard("all-time")
-	
-	for grid: GridContainer in [leaderboard_all_time_grid, leaderboard_weekly_grid]:
-		for c in grid.get_children():
-			c.queue_free()
-	
 	var your_score := Global.score
-	for kv in [[weekly_rank, leaderboard_weekly_grid, scroll_weekly, 0],
-			[all_time_rank, leaderboard_all_time_grid, scroll_all_time, 1]]:
+	for kv in [["weekly", leaderboard_weekly_grid, scroll_weekly, 0],
+			["all-time", leaderboard_all_time_grid, scroll_all_time, 1]]:
+		#var rows = kv[0] as Array
+		var rows = await LeaderboardManager.get_scoreboard(kv[0])
+		var original_tab = tab_container.current_tab
 		tab_container.current_tab = kv[3] as int
-		await get_tree().process_frame
-		var rows = kv[0] as Array
 		var grid = kv[1] as GridContainer
 		var scroll = kv[2] as ScrollContainer
 		var your_score_used := false
 		var target_label: Control
 		
-		##MOCK
+		for child: Control in grid.get_children():
+			child.queue_free()
+		
+		## MOCK
 		#for i in range(randi_range(50, 100)):
 			#_insert_record(grid, 999, "mock1", 10, false)
 		#await get_tree().process_frame
 		
 		# GEN
 		for row in rows:
-			print_debug(row)
-			if your_score > row.score and not your_score_used:
+			if Global.need_submit and your_score > row.score and not your_score_used:
 				_insert_record(grid, row.rank, "[YOU]", your_score, true)
 				your_score_used = true
 			target_label = _insert_record(grid, row.rank + (1 if your_score_used else 0), row.nickname, row.score, false)
-		if not your_score_used:
+		if Global.need_submit and not your_score_used:
 			target_label = _insert_record(grid, -1, "[YOU]", your_score, true)
 		
-		##MOCK
+		## MOCK
 		#for i in range(randi_range(50, 100)):
 			#_insert_record(grid, 999, "mock2", 10, false)
 		#await get_tree().process_frame
 		
 		# Scroll
 		await get_tree().process_frame
-		print_debug(target_label)
-		scroll.set_deferred("scroll_vertical", target_label.position.y - 15 * 4)
+		if not target_label and Global.nickname:
+			for label: Label in grid.get_children():
+				if label and label.text.contains(Global.nickname):
+					target_label = label
+					print_debug("Find Target label.")
+					break
+		if target_label:
+			scroll.set_deferred("scroll_vertical", target_label.position.y - 15 * 4)
 	
-	tab_container.current_tab = 0
+		tab_container.current_tab = original_tab
+	
 	nickname_line_edit.grab_focus()
 	button_submit.disabled = false
 
@@ -119,11 +130,14 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 
 func _on_button_submit_pressed() -> void:
 	if nickname_line_edit.text:
+		if Global.nickname and CheddaBoards.get_nickname() != Global.nickname:
+			CheddaBoards.change_nickname(Global.nickname)
 		LeaderboardManager.submit_score(Global.score)
 		button_submit.text = "WAITING"
 		button_submit.disabled = true
 		await LeaderboardManager.score_submitted
 		button_submit.text = "OK!"
+		Global.need_submit = false
 
 
 func _on_button_refresh_pressed() -> void:

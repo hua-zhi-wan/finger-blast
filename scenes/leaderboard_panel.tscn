@@ -8,7 +8,7 @@ font_size = 18
 stacked_shadow_count = 1
 stacked_shadow_0/offset = Vector2(2, 2)
 
-[node name="LeaderboardPanel" type="Control" unique_id=698722433 node_paths=PackedStringArray("nickname_line_edit", "button_submit", "button_refresh", "tab_container", "scroll_weekly", "leaderboard_weekly_grid", "scroll_all_time", "leaderboard_all_time_grid")]
+[node name="LeaderboardPanel" type="Control" unique_id=698722433 node_paths=PackedStringArray("title1", "title2", "nickname_line_edit", "button_submit", "button_refresh", "tab_container", "scroll_weekly", "leaderboard_weekly_grid", "scroll_all_time", "leaderboard_all_time_grid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mfjo3")
 script = ExtResource("2_qcv18")
+title1 = NodePath("Label")
+title2 = NodePath("Label2")
 nickname_line_edit = NodePath("LineEdit")
 button_submit = NodePath("ButtonSubmit")
 button_refresh = NodePath("ButtonRefresh")
@@ -32,6 +34,15 @@ layout_mode = 0
 offset_right = 320.0
 offset_bottom = 48.0
 text = "- GAME OVER -"
+label_settings = SubResource("LabelSettings_s1fef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=301119114]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 48.0
+text = "- RANKING -"
 label_settings = SubResource("LabelSettings_s1fef")
 horizontal_alignment = 1
 vertical_alignment = 1

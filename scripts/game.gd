@@ -32,7 +32,7 @@ var buff_timer: float
 @export var heart_count: Container
 @export var heart_node: Control
 @export var heart_label: Label
-var heart: int = 1
+var heart: int = 3
 
 var score_bar: int = 10000
 
@@ -172,7 +172,6 @@ func _wave() -> void:
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.stop()
 	
-	
 	if wave_index > 1:
 		for entity: Node2D in $Tombs.get_children():
 			if entity is Tomb:
@@ -185,7 +184,7 @@ func _wave() -> void:
 		await fill_tomb(tomb_count - total_tomb)
 	
 	var soldier_count = randi_range(4, 9) + wave_index
-	var max_soldier_count := randi_range(15, 20)
+	var max_soldier_count := randi_range(12, 16)
 	spawn_soldiers(mini(soldier_count, max_soldier_count), true)
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
@@ -194,14 +193,13 @@ func _wave() -> void:
 	while soldier_count - max_soldier_count > 0:
 		await get_tree().create_timer(4, false).timeout
 		soldier_count -= max_soldier_count
-		await spawn_soldiers(mini(soldier_count, max_soldier_count), false)
+		await spawn_soldiers(mini(soldier_count, max_soldier_count), true)
 
 
 func spawn_soldiers(count: int, buff_flag: bool):
 	var target_position = Vector2(16 * randi_range(0, 20), 0)
 	var direction = [-1, 1].pick_random()
 	var soldier_count_array = range(count)
-	print_debug(soldier_count_array)
 	var buff_index = soldier_count_array.pick_random()
 	for i in soldier_count_array:
 		var soldier = soldier_prefab.instantiate() as Soldier

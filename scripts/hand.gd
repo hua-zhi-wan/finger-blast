@@ -103,6 +103,7 @@ func dead():
 			game.update_heart()
 		else:
 			Global.score = game.score
+			Global.need_submit = true
 			if is_inside_tree():
 				get_tree().change_scene_to_file("res://scenes/leaderboard_panel.tscn")
 		

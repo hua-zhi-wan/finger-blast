@@ -3,6 +3,7 @@ extends Node
 
 var nickname: String
 var score: int
+var need_submit: bool = false
 
 
 func _ready() -> void:
