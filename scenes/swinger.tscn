@@ -97,7 +97,7 @@ radius = 5.0
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_3ynh5")
-move_speed = 96.0
+move_speed = 80.0
 max_life = 3
 price = 250
 
@@ -107,7 +107,7 @@ position = Vector2(8, 12)
 texture = SubResource("GradientTexture2D_n8v1i")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=129546513]
-self_modulate = Color(1, 0.4392157, 0.52156866, 1)
+self_modulate = Color(1, 0.54901963, 0.8, 1)
 material = SubResource("ShaderMaterial_2oslh")
 position = Vector2(8, 12)
 texture = ExtResource("3_3ynh5")

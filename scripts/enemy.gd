@@ -35,7 +35,7 @@ func hurt():
 		game.add_child(scoreup)
 		scoreup.global_position = global_position
 		scoreup.score = price
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1, false).timeout
 	$Sprite2D.material.set_shader_parameter('enabled', false)
 
 

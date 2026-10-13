@@ -17,7 +17,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.frame = randi_range(0, $AnimatedSprite2D.sprite_frames.get_frame_count("default"))
 	$AnimatedSprite2D.flip_h = randf() < 0.5
 	$AnimatedSprite2D.scale = Vector2.ZERO
-	await get_tree().create_timer(randf_range(0, 0.2)).timeout
+	await get_tree().create_timer(randf_range(0, 0.2), false).timeout
 	$AnimationPlayer.play("spawn")
 	SE.play_sound("Grow", randf_range(0.7, 1.2))
 

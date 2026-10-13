@@ -78,7 +78,7 @@ collision_layer = 8
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_asybb")
-move_speed = 160.0
+move_speed = 144.0
 max_life = 3
 price = 150
 

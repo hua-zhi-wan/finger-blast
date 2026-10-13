@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://da1lydegw6g6l" path="res://sounds/grow.sfxr" id="9_f5c3n"]
 [ext_resource type="AudioStream" uid="uid://fy7pbd4go6er" path="res://sounds/buff.sfxr" id="10_hj8gq"]
 [ext_resource type="AudioStream" uid="uid://upo0mrdjfvd3" path="res://sounds/jump.sfxr" id="11_6ltun"]
+[ext_resource type="AudioStream" uid="uid://doa0yospoye6x" path="res://sounds/heart_up.sfxr" id="12_yddo4"]
 
 [node name="SE" type="Node" unique_id=1704279195]
 process_mode = 3
@@ -50,5 +51,8 @@ stream = ExtResource("10_hj8gq")
 
 [node name="Pause" type="AudioStreamPlayer" parent="." unique_id=1328881553]
 stream = ExtResource("11_6ltun")
+
+[node name="HeartUp" type="AudioStreamPlayer" parent="." unique_id=1005276719]
+stream = ExtResource("12_yddo4")
 
 [node name="Empty" type="AudioStreamPlayer" parent="." unique_id=1890932868]

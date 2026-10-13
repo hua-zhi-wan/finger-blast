@@ -28,7 +28,7 @@ size = Vector2(64, 336)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khhxn"]
 size = Vector2(64, 336)
 
-[node name="Game" type="Node2D" unique_id=1431383158 node_paths=PackedStringArray("wave_label", "score_label", "buff_label", "heart_container", "heart_node", "heart_label") groups=["game"]]
+[node name="Game" type="Node2D" unique_id=1431383158 node_paths=PackedStringArray("wave_label", "score_label", "buff_label", "heart_container", "heart_count", "heart_node", "heart_label") groups=["game"]]
 y_sort_enabled = true
 script = ExtResource("1_yqjtg")
 tomb_prefab = ExtResource("2_yqjtg")
@@ -41,6 +41,7 @@ wave_label = NodePath("UI/WaveCount")
 score_label = NodePath("UI/ScoreCount")
 buff_label = NodePath("UI/BuffShow")
 heart_container = NodePath("UI/HeartCount/HeartContainer")
+heart_count = NodePath("UI/HeartCount")
 heart_node = NodePath("UI/HeartCount/HeartContainer/Heart")
 heart_label = NodePath("UI/HeartCount/Label")
 metadata/_edit_horizontal_guides_ = [160.0, 192.0, 0.0]
@@ -116,6 +117,8 @@ offset_top = 5.0
 offset_right = -8.0
 offset_bottom = 16.0
 grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(1, 0)
 theme_override_constants/separation = 0
 alignment = 2
 

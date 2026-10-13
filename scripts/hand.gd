@@ -102,14 +102,15 @@ func dead():
 			game.heart -= 1
 			game.update_heart()
 		else:
+			Global.score = game.score
 			if is_inside_tree():
-				get_tree().change_scene_to_file("res://scenes/title.tscn")
+				get_tree().change_scene_to_file("res://scenes/leaderboard_panel.tscn")
 		
 		$AnimationPlayer.play("revive")
 		await $AnimationPlayer.animation_finished
 		is_dead = false
 		$Camera2D.limit_bottom -= 16
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(3, false).timeout
 		$HurtArea.set_deferred("monitoring", true)
 		
 

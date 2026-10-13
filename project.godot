@@ -28,7 +28,7 @@ buses/default_bus_layout="uid://b1pynbmmc2q1l"
 SE="*uid://dfi2c6f0hcote"
 Global="*uid://dntx12j5qtxdi"
 CheddaBoards="*uid://cutg827n3uxvt"
-RankingBoard="*uid://bd7ipnvs75eq0"
+LeaderboardManager="*uid://bd7ipnvs75eq0"
 
 [display]
 

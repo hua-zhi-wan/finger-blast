@@ -29,9 +29,12 @@ var buff: StringName = &""
 var buff_timer: float
 
 @export var heart_container: Container
+@export var heart_count: Container
 @export var heart_node: Control
 @export var heart_label: Label
-var heart: int = 3
+var heart: int = 1
+
+var score_bar: int = 10000
 
 
 func _ready() -> void:
@@ -104,7 +107,7 @@ func fill_tomb(n: int):
 		if is_filled < 0:
 			var tomb_target_position = Vector2(index % 20 * 16, (index / 20 + 1) * 16)
 			tomb_queue.append(tomb_target_position)
-			await get_tree().create_timer(0.02).timeout
+			await get_tree().create_timer(0.02, false).timeout
 		index += 1
 
 
@@ -121,6 +124,15 @@ func get_score(v: int):
 		create_tween().tween_method(func(a): 
 			hand.camera.offset = Vector2.from_angle(randf() * PI * 2) * a
 		, 2.0, 0, 0.05)
+	
+	if score >= score_bar:
+		score_bar += 20000
+		heart += 1
+		SE.play_sound("HeartUp")
+		update_heart()
+		heart_count.offset_transform_scale = Vector2.ONE * 1.2
+		create_tween().tween_property(
+			heart_count, 'offset_transform_scale', Vector2.ONE, 0.1)
 
 
 func get_buff(buff_name: StringName):
@@ -160,32 +172,45 @@ func _wave() -> void:
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.stop()
 	
-	var target_position = Vector2(16 * randi_range(0, 20), 0)
-	var direction = [-1, 1].pick_random()
 	
 	if wave_index > 1:
 		for entity: Node2D in $Tombs.get_children():
 			if entity is Tomb:
 				var tomb = entity as Tomb
 				tomb.move_down()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1, false).timeout
 	
 	var total_tomb = get_tree().get_node_count_in_group('tomb')
 	if total_tomb < tomb_count * 0.5:
 		await fill_tomb(tomb_count - total_tomb)
 	
-	var soldier_count = range(randi_range(4, 8) + wave_index)
-	var buff_index = soldier_count.pick_random()
-	for i in soldier_count:
+	var soldier_count = randi_range(4, 9) + wave_index
+	var max_soldier_count := randi_range(15, 20)
+	spawn_soldiers(mini(soldier_count, max_soldier_count), true)
+	
+	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
+		timer.start()
+	
+	while soldier_count - max_soldier_count > 0:
+		await get_tree().create_timer(4, false).timeout
+		soldier_count -= max_soldier_count
+		await spawn_soldiers(mini(soldier_count, max_soldier_count), false)
+
+
+func spawn_soldiers(count: int, buff_flag: bool):
+	var target_position = Vector2(16 * randi_range(0, 20), 0)
+	var direction = [-1, 1].pick_random()
+	var soldier_count_array = range(count)
+	print_debug(soldier_count_array)
+	var buff_index = soldier_count_array.pick_random()
+	for i in soldier_count_array:
 		var soldier = soldier_prefab.instantiate() as Soldier
 		$Enemies.add_child(soldier)
 		soldier.global_position = target_position
 		soldier.move_horizontal_direction = direction
-		soldier.has_buff = i == buff_index
-		await get_tree().create_timer(16.0 / soldier.move_speed).timeout
-	
-	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
-		timer.start()
+		soldier.has_buff = (i == buff_index) and buff_flag
+		await get_tree().create_timer(16.0 / soldier.move_speed, false).timeout
+
 
 
 func _on_timer_timeout() -> void:

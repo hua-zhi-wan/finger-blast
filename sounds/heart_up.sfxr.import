@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://doa0yospoye6x"
+path="res://.godot/imported/heart_up.sfxr-8ecab6332441d61d20639ace61e10b61.sample"
+
+[deps]
+
+source_file="res://sounds/heart_up.sfxr"
+dest_files=["res://.godot/imported/heart_up.sfxr-8ecab6332441d61d20639ace61e10b61.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position.y += delta * move_speed
-	if position.y > target_y and target_y < 12 * 16:
+	if global_position.y > target_y and target_y < 12 * 16:
 		if randf() < 0.5:
 			game.tomb_queue.push_back(Vector2(global_position.x, target_y - 16))
 		target_y += 16
