@@ -47,6 +47,7 @@ func _ready() -> void:
 		nickname_line_edit.text = CheddaBoards.get_nickname()
 	
 	var your_score := Global.score
+	var your_name := tr("[YOU]")
 	for kv in [["weekly", leaderboard_weekly_grid, scroll_weekly, 0],
 			["all-time", leaderboard_all_time_grid, scroll_all_time, 1]]:
 		#var rows = kv[0] as Array
@@ -69,11 +70,11 @@ func _ready() -> void:
 		# GEN
 		for row in rows:
 			if Global.need_submit and your_score > row.score and not your_score_used:
-				_insert_record(grid, row.rank, "[YOU]", your_score, true)
+				_insert_record(grid, row.rank, your_name, your_score, true)
 				your_score_used = true
 			target_label = _insert_record(grid, row.rank + (1 if your_score_used else 0), row.nickname, row.score, false)
 		if Global.need_submit and not your_score_used:
-			target_label = _insert_record(grid, -1, "[YOU]", your_score, true)
+			target_label = _insert_record(grid, -1, your_name, your_score, true)
 		
 		## MOCK
 		#for i in range(randi_range(50, 100)):

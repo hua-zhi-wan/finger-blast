@@ -91,7 +91,13 @@ func _process(delta: float) -> void:
 		swinger_queue -= 1
 	if buff_timer > 0:
 		buff_timer -= delta
-		buff_label.text = "%s:%d" % [buff.to_upper(), ceili(buff_timer)]
+		var buff_str
+		match buff:
+			Buff.MELEE: buff_str =  tr("MELEE")
+			Buff.SWIFT: buff_str =  tr("RAPID")
+			Buff.PRECISE: buff_str =  tr("PRECISE")
+			Buff.FAN: buff_str =  tr("SPREAD")
+		buff_label.text = "%s:%d" % [buff_str, ceili(buff_timer)]
 		if buff_timer <= 0:
 			remove_buff()
 
