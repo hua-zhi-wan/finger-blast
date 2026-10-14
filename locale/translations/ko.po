@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "움직여라! & 쏴!"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "발사!"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "랭킹"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "화면"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "소리"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "한국어"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "종료"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- 일시 정지 -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "계속"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "종료"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- 게임 오버 -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- 랭킹 -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "주간"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "로딩 중……"
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "전체"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "새로고침"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "닉네임 입력"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "제출"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "전체 화면"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "창 모드"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "소리 켬"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "소리 끔"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "효과음만"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "근접"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "속사"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "정밀"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "확산"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "웨이브"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[나]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "대기 중"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "확인!"
+
+msgid "Finger Blast"
+msgstr "핑거 블라스트"

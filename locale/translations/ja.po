@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "動け！ 撃て！"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "ブラスト！"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "ランキング"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "スクリーン"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "サウンド"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "日本語"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "終了"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- 一時停止 -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "再開"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "終了"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- ゲームオーバー -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- ランキング -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "週間"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "読み込み中……"
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "歴代"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "更新"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "ニックネームを入力"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "送信"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "フルスクリーン"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "ウィンドウ"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "サウンド オン"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "サウンド オフ"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "効果音のみ"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "近接"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "速射"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "精密"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "拡散"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "ウェーブ"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[あなた]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "待機中"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "OK!"
+
+msgid "Finger Blast"
+msgstr "フィンガーブラスト"

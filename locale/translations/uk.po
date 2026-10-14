@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "Рухайся! & Стріляй!"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "Бабах!"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "Рейтинг"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "Екран"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "Звук"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "Українська"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "Вихід"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- ПАУЗА -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "ПРОДОВЖИТИ"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "ВИХІД"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- ГРУ ЗАВЕРШЕНО -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- РЕЙТИНГ -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "Тижневий"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "Завантаження..."
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "За весь час"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "ОНОВИТИ"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "ВВЕДИ_НІК"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "НАДІСЛАТИ"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "Повний Екран"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "У Вікні"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "Звук: Увімк"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "Звук: Вимк"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "Лише SFX"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "БЛИЖНІЙ БІЙ"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "ШВИДКИЙ"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "ТОЧНИЙ"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "ВЕЕР"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "ХВИЛЯ"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[ТИ]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "ОЧІКУВАННЯ"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "ОК!"
+
+msgid "Finger Blast"
+msgstr "Finger Blast"

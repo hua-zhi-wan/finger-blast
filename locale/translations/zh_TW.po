@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "移動！ 並 射擊！"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "射爆！"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "排行榜"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "螢幕"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "音效"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "繁體中文"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "退出"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- 已暫停 -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "繼續"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "退出"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- 遊戲結束 -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- 排行榜 -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "每週"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "載入中……"
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "累計"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "重新整理"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "輸入暱稱"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "提交"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "全螢幕"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "視窗"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "音效開"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "音效關"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "僅音效"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "近戰"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "速射"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "精準"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "散射"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "波次"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[你]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "等待中"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "完成！"
+
+msgid "Finger Blast"
+msgstr "指尖射爆"

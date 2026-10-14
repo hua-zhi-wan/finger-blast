@@ -161,7 +161,7 @@ _data = {
 &"loop": SubResource("Animation_pyl7j")
 }
 
-[node name="Title" type="Control" unique_id=1165852687 node_paths=PackedStringArray("button_play", "button_fullscreen", "button_sound")]
+[node name="Title" type="Control" unique_id=1165852687 node_paths=PackedStringArray("button_play", "button_fullscreen", "button_sound", "buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,9 +170,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_b3w7a")
 script = ExtResource("1_4ignj")
-button_play = NodePath("Control/ButtonPlay")
-button_fullscreen = NodePath("Control/ButtonFullScreen")
-button_sound = NodePath("Control/ButtonSound")
+button_play = NodePath("Control/CenterContainer/ButtonPlay")
+button_fullscreen = NodePath("Control/CenterContainer2/ButtonFullScreen")
+button_sound = NodePath("Control/CenterContainer4/ButtonSound")
+buttons = [NodePath("Control/CenterContainer/ButtonPlay"), NodePath("Control/CenterContainer2/ButtonFullScreen"), NodePath("Control/CenterContainer3/ButtonRanking"), NodePath("Control/CenterContainer4/ButtonSound"), NodePath("Control/CenterContainer5/ButtonLanguage"), NodePath("Control/CenterContainer6/ButtonQuit")]
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=336782730]
@@ -237,7 +238,7 @@ position = Vector2(272, 64)
 
 [node name="TitleEnemy6" parent="Enemies" unique_id=1264150632 instance=ExtResource("4_pyl7j")]
 modulate = Color(0.9882353, 0.54509807, 0.7921569, 1)
-position = Vector2(32, 192)
+position = Vector2(32, 160)
 
 [node name="TitleEnemy7" parent="Enemies" unique_id=533959459 instance=ExtResource("4_pyl7j")]
 modulate = Color(0.54901963, 0.54901963, 0.54901963, 1)
@@ -257,7 +258,7 @@ position = Vector2(192, 16)
 
 [node name="TitleEnemy5" parent="Enemies" unique_id=349315646 instance=ExtResource("4_pyl7j")]
 modulate = Color(0.34117648, 0.6509804, 0.30588236, 1)
-position = Vector2(272, 192)
+position = Vector2(272, 160)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=495502465]
 layout_mode = 0
@@ -316,57 +317,107 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
 
-[node name="ButtonPlay" type="Button" parent="Control" unique_id=538582645]
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=1259441012]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 80.0
-offset_bottom = 35.0
+offset_right = 96.0
+offset_bottom = 48.0
+
+[node name="ButtonPlay" type="Button" parent="Control/CenterContainer" unique_id=538582645]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer2/ButtonFullScreen")
+focus_neighbor_top = NodePath("../../CenterContainer4/ButtonSound")
+focus_neighbor_right = NodePath("../../CenterContainer3/ButtonRanking")
+focus_neighbor_bottom = NodePath("../../CenterContainer4/ButtonSound")
+focus_next = NodePath("../../CenterContainer3/ButtonRanking")
+focus_previous = NodePath("../../CenterContainer6/ButtonQuit")
 text = "Blast!"
 
-[node name="ButtonRanking" type="Button" parent="Control" unique_id=1008288210]
+[node name="CenterContainer2" type="CenterContainer" parent="Control" unique_id=82461462]
 layout_mode = 0
-offset_left = 112.0
+offset_left = -64.0
 offset_top = 16.0
-offset_right = 176.0
-offset_bottom = 35.0
-text = "Ranking"
+offset_right = 32.0
+offset_bottom = 64.0
 
-[node name="ButtonFullScreen" type="Button" parent="Control" unique_id=14063720]
-layout_mode = 0
-offset_left = -48.0
-offset_top = 48.0
-offset_right = 16.0
-offset_bottom = 67.0
+[node name="ButtonFullScreen" type="Button" parent="Control/CenterContainer2" unique_id=14063720]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer6/ButtonQuit")
+focus_neighbor_top = NodePath("../../CenterContainer/ButtonPlay")
+focus_neighbor_right = NodePath("../../CenterContainer/ButtonPlay")
+focus_neighbor_bottom = NodePath("../../CenterContainer4/ButtonSound")
+focus_next = NodePath("../../CenterContainer4/ButtonSound")
+focus_previous = NodePath("../../CenterContainer3/ButtonRanking")
 text = "Screen"
 
-[node name="ButtonSound" type="Button" parent="Control" unique_id=1413024716]
+[node name="CenterContainer3" type="CenterContainer" parent="Control" unique_id=1481464686]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 80.0
-offset_bottom = 67.0
+offset_left = 96.0
+offset_right = 192.0
+offset_bottom = 48.0
+
+[node name="ButtonRanking" type="Button" parent="Control/CenterContainer3" unique_id=1008288210]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer/ButtonPlay")
+focus_neighbor_top = NodePath("../../CenterContainer5/ButtonLanguage")
+focus_neighbor_right = NodePath("../../CenterContainer6/ButtonQuit")
+focus_neighbor_bottom = NodePath("../../CenterContainer5/ButtonLanguage")
+focus_next = NodePath("../../CenterContainer2/ButtonFullScreen")
+focus_previous = NodePath("../../CenterContainer/ButtonPlay")
+text = "Ranking"
+
+[node name="CenterContainer4" type="CenterContainer" parent="Control" unique_id=188053741]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 80.0
+
+[node name="ButtonSound" type="Button" parent="Control/CenterContainer4" unique_id=1413024716]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer2/ButtonFullScreen")
+focus_neighbor_top = NodePath("../../CenterContainer/ButtonPlay")
+focus_neighbor_right = NodePath("../../CenterContainer5/ButtonLanguage")
+focus_neighbor_bottom = NodePath("../../CenterContainer/ButtonPlay")
+focus_next = NodePath("../../CenterContainer5/ButtonLanguage")
+focus_previous = NodePath("../../CenterContainer2/ButtonFullScreen")
 text = "Sound"
 
-[node name="ButtonLanguage" type="Button" parent="Control" unique_id=1406107623]
+[node name="CenterContainer5" type="CenterContainer" parent="Control" unique_id=1575723551]
 layout_mode = 0
-offset_left = 112.0
-offset_top = 48.0
-offset_right = 176.0
-offset_bottom = 67.0
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 80.0
+
+[node name="ButtonLanguage" type="Button" parent="Control/CenterContainer5" unique_id=1406107623]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer4/ButtonSound")
+focus_neighbor_top = NodePath("../../CenterContainer3/ButtonRanking")
+focus_neighbor_right = NodePath("../../CenterContainer6/ButtonQuit")
+focus_neighbor_bottom = NodePath("../../CenterContainer3/ButtonRanking")
+focus_next = NodePath("../../CenterContainer6/ButtonQuit")
+focus_previous = NodePath("../../CenterContainer4/ButtonSound")
 text = "English"
 
-[node name="ButtonQuit" type="Button" parent="Control" unique_id=505803066]
+[node name="CenterContainer6" type="CenterContainer" parent="Control" unique_id=1226031089]
 layout_mode = 0
-offset_left = 176.0
-offset_top = 48.0
-offset_right = 240.0
-offset_bottom = 67.0
+offset_left = 160.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="ButtonQuit" type="Button" parent="Control/CenterContainer6" unique_id=505803066]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../CenterContainer3/ButtonRanking")
+focus_neighbor_top = NodePath("../../CenterContainer3/ButtonRanking")
+focus_neighbor_right = NodePath("../../CenterContainer2/ButtonFullScreen")
+focus_neighbor_bottom = NodePath("../../CenterContainer5/ButtonLanguage")
+focus_next = NodePath("../../CenterContainer/ButtonPlay")
+focus_previous = NodePath("../../CenterContainer5/ButtonLanguage")
 text = "Quit"
 
-[connection signal="pressed" from="Control/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="Control/ButtonRanking" to="." method="_on_button_ranking_pressed"]
-[connection signal="pressed" from="Control/ButtonFullScreen" to="." method="_on_button_full_screen_pressed"]
-[connection signal="pressed" from="Control/ButtonSound" to="." method="_on_button_sound_pressed"]
-[connection signal="pressed" from="Control/ButtonLanguage" to="." method="_on_button_language_pressed"]
-[connection signal="pressed" from="Control/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Control/CenterContainer2/ButtonFullScreen" to="." method="_on_button_full_screen_pressed"]
+[connection signal="pressed" from="Control/CenterContainer3/ButtonRanking" to="." method="_on_button_ranking_pressed"]
+[connection signal="pressed" from="Control/CenterContainer4/ButtonSound" to="." method="_on_button_sound_pressed"]
+[connection signal="pressed" from="Control/CenterContainer5/ButtonLanguage" to="." method="_on_button_language_pressed"]
+[connection signal="pressed" from="Control/CenterContainer6/ButtonQuit" to="." method="_on_button_quit_pressed"]

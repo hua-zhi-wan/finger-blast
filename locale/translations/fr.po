@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "Bougez ! & Tirez !"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "Boum !"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "Classement"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "Écran"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "Son"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "Français"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "Quitter"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- PAUSE -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "REPRENDRE"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "QUITTER"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- FIN DE PARTIE -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- CLASSEMENT -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "Hebdo"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "Général"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "RAFRAÎCHIR"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "TON_PSEUDO"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "ENVOYER"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "Plein Écran"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "Fenêtré"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "Son Oui"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "Son Non"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "Effets Seuls"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "MÊLÉE"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "RAPIDE"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "PRÉCIS"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "DISPERSION"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "VAGUE"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[TOI]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "ATTENTE"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "OK !"
+
+msgid "Finger Blast"
+msgstr "Finger Blast"

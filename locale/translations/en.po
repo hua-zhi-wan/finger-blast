@@ -1,0 +1,150 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr "Just Move! & Shoot!"
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr "Blast!"
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr "Ranking"
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr "Screen"
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr "Sound"
+
+#: scenes/title.tscn
+msgid "English"
+msgstr "English"
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr "Quit"
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr "- PAUSED -"
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr "RESUME"
+
+#: scenes/game.tscn scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr "QUIT"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr "- GAME OVER -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr "- RANKING -"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr "Weekly"
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr "Loading..."
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr "All-Time"
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr "REFRESH"
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr "TYPE_YOUR_NAME_HERE"
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr "SUBMIT"
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr "Full Screen"
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr "Windowed"
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr "Sound On"
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr "Sound Off"
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr "SFX Only"
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr "MELEE"
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr "RAPID"
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr "PRECISE"
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr "SPREAD"
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr "WAVE"
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr "[YOU]"
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr "WAITING"
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr "OK!"
+
+msgid "Finger Blast"
+msgstr "Finger Blast"

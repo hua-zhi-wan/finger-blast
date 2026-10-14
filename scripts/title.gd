@@ -1,16 +1,10 @@
 extends Control
 
 @export var button_play: Button
-
 @export var button_fullscreen: Button
-@onready var info_full_screen = tr("Full Screen")
-@onready var info_windowed = tr("Windowed")
-
 @export var button_sound: Button
-@onready var info_se_on = tr("Sound On")
-@onready var info_se_off = tr("Sound Off")
-@onready var info_sfx_only = tr("SFX Only")
 
+@export var buttons: Array[Button]
 
 func _ready() -> void:
 	SE.in_game(false)
@@ -20,7 +14,8 @@ func _ready() -> void:
 	if not Global.setting_changed.is_connected(_on_setting_changed):
 		Global.setting_changed.connect(_on_setting_changed)
 	Global.read_all_settings()
-	for button: Button in $Control.get_children():
+	refresh_ui()
+	for button: Button in buttons:
 		button.focus_entered.connect(SE.play_sound.bind("Click"))
 		button.mouse_entered.connect(SE.play_sound.bind("Click"))
 		button.pressed.connect(SE.play_sound.bind("Press"))
@@ -31,26 +26,37 @@ func _on_setting_changed(key: String, value):
 		"fullscreen":
 			if value:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-				button_fullscreen.text = info_full_screen
+				button_fullscreen.text = tr("Full Screen")
 			else:
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-				button_fullscreen.text = info_windowed
+				button_fullscreen.text = tr("Windowed")
 		"sound":
 			match value:
 				0:
 					AudioServer.set_bus_mute(0, true)
 					AudioServer.set_bus_mute(2, false)
-					button_sound.text = info_se_off
+					button_sound.text = tr("Sound Off")
 				1:
 					AudioServer.set_bus_mute(0, false)
 					AudioServer.set_bus_mute(2, false)
-					button_sound.text = info_se_on
+					button_sound.text = tr("Sound On")
 				2:
 					AudioServer.set_bus_mute(0, false)
 					AudioServer.set_bus_mute(2, true)
-					button_sound.text = info_sfx_only
+					button_sound.text = tr("SFX Only")
 		"language":
 			TranslationServer.set_locale(value)
+
+
+func refresh_ui():
+		if Global.get_setting("fullscreen"):
+			button_fullscreen.text = tr("Full Screen")
+		else:
+			button_fullscreen.text = tr("Windowed")
+		match Global.get_setting("sound"):
+			0: button_sound.text = tr("Sound Off")
+			1: button_sound.text = tr("Sound On")
+			2: button_sound.text = tr("SFX Only")
 
 
 
@@ -75,6 +81,7 @@ func _on_button_sound_pressed() -> void:
 func _on_button_language_pressed() -> void:
 	var locale = Global.get_setting("language") as String
 	Global.set_setting("language", languages.get((languages.find(locale) + 1) % languages.size()))
+	refresh_ui()
 
 
 func _on_button_quit_pressed() -> void:
