@@ -24,10 +24,10 @@ button_submit = NodePath("ButtonSubmit")
 button_refresh = NodePath("ButtonRefresh")
 button_close = NodePath("ButtonClose")
 tab_container = NodePath("TabContainer")
-scroll_weekly = NodePath("TabContainer/WeeklyContainer/ScrollContainer")
-leaderboard_weekly_grid = NodePath("TabContainer/WeeklyContainer/ScrollContainer/Weekly")
-scroll_all_time = NodePath("TabContainer/AllTimeContainer/ScrollContainer")
-leaderboard_all_time_grid = NodePath("TabContainer/AllTimeContainer/ScrollContainer/AllTime")
+scroll_weekly = NodePath("TabContainer/Weekly/ScrollContainer")
+leaderboard_weekly_grid = NodePath("TabContainer/Weekly/ScrollContainer/Weekly")
+scroll_all_time = NodePath("TabContainer/All-Time/ScrollContainer")
+leaderboard_all_time_grid = NodePath("TabContainer/All-Time/ScrollContainer/AllTime")
 your_record_color = Color(0.89411765, 0.4, 0.47058824, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1907800968]
@@ -61,10 +61,8 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
-tab_0/title = "Weekly"
-tab_1/title = "All-Time"
 
-[node name="WeeklyContainer" type="MarginContainer" parent="TabContainer" unique_id=265241478]
+[node name="Weekly" type="MarginContainer" parent="TabContainer" unique_id=265241478]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -73,23 +71,23 @@ theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 0
 metadata/_tab_name = "Weekly"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/WeeklyContainer" unique_id=352799461]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Weekly" unique_id=352799461]
 layout_mode = 2
 
-[node name="Weekly" type="GridContainer" parent="TabContainer/WeeklyContainer/ScrollContainer" unique_id=1229452364]
+[node name="Weekly" type="GridContainer" parent="TabContainer/Weekly/ScrollContainer" unique_id=1229452364]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="LoadingLabel" type="Label" parent="TabContainer/WeeklyContainer/ScrollContainer/Weekly" unique_id=669547341]
+[node name="LoadingLabel" type="Label" parent="TabContainer/Weekly/ScrollContainer/Weekly" unique_id=669547341]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Loading..."
 horizontal_alignment = 1
 
-[node name="AllTimeContainer" type="MarginContainer" parent="TabContainer" unique_id=1427065939]
+[node name="All-Time" type="MarginContainer" parent="TabContainer" unique_id=1427065939]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -99,17 +97,17 @@ theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 1
 metadata/_tab_name = "All-Time"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/AllTimeContainer" unique_id=926835168]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/All-Time" unique_id=926835168]
 layout_mode = 2
 
-[node name="AllTime" type="GridContainer" parent="TabContainer/AllTimeContainer/ScrollContainer" unique_id=647882822]
+[node name="AllTime" type="GridContainer" parent="TabContainer/All-Time/ScrollContainer" unique_id=647882822]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="LoadingLabel" type="Label" parent="TabContainer/AllTimeContainer/ScrollContainer/AllTime" unique_id=815269910]
+[node name="LoadingLabel" type="Label" parent="TabContainer/All-Time/ScrollContainer/AllTime" unique_id=815269910]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Loading..."

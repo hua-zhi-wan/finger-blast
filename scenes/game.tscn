@@ -73,6 +73,7 @@ color = Color(0.25, 0.25, 0.25, 1)
 [node name="UI" type="CanvasLayer" parent="." unique_id=2004683024]
 
 [node name="WaveCount" type="Label" parent="UI" unique_id=1200039618]
+auto_translate_mode = 2
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -80,11 +81,11 @@ offset_left = 8.0
 offset_top = -16.0
 offset_right = 128.0
 grow_vertical = 0
-tooltip_auto_translate_mode = 2
 text = "WAVE:1"
 label_settings = SubResource("LabelSettings_s1fef")
 
 [node name="ScoreCount" type="Label" parent="UI" unique_id=1745349006]
+auto_translate_mode = 2
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -98,16 +99,15 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(1, 1)
 offset_transform_enabled = true
 offset_transform_pivot_ratio = Vector2(1, 1)
-tooltip_auto_translate_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_s1fef")
 horizontal_alignment = 2
 
 [node name="BuffShow" type="Label" parent="UI" unique_id=1525892831]
+auto_translate_mode = 2
 offset_left = 8.0
 offset_right = 120.0
 offset_bottom = 16.0
-tooltip_auto_translate_mode = 2
 text = "BUFF:0"
 label_settings = SubResource("LabelSettings_s1fef")
 vertical_alignment = 2
@@ -137,8 +137,8 @@ texture = ExtResource("7_gee14")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="UI/HeartCount" unique_id=1242325613]
+auto_translate_mode = 2
 layout_mode = 2
-tooltip_auto_translate_mode = 2
 text = "x3"
 label_settings = SubResource("LabelSettings_khhxn")
 horizontal_alignment = 2

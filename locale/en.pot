@@ -1,0 +1,145 @@
+# LANGUAGE translation for Finger Blast for the following files:
+# res://scenes/title.tscn
+# res://scenes/game.tscn
+# res://scenes/leaderboard_panel.tscn
+# res://scripts/title.gd
+# res://scripts/game.gd
+# res://scripts/leaderboard_panel.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Finger Blast\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: scenes/title.tscn
+msgid "Just Move! & Shoot!"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "Blast!"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "Ranking"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "Screen"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "Sound"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "English"
+msgstr ""
+
+#: scenes/title.tscn
+msgid "Quit"
+msgstr ""
+
+#: scenes/game.tscn
+msgid "- PAUSED -"
+msgstr ""
+
+#: scenes/game.tscn
+msgid "RESUME"
+msgstr ""
+
+#: scenes/game.tscn
+#: scenes/leaderboard_panel.tscn
+msgid "QUIT"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "- GAME OVER -"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "- RANKING -"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "Weekly"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "Loading..."
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "All-Time"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "REFRESH"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "TYPE_YOUR_NAME_HERE"
+msgstr ""
+
+#: scenes/leaderboard_panel.tscn
+msgid "SUBMIT"
+msgstr ""
+
+#: scripts/title.gd:6
+msgid "Full Screen"
+msgstr ""
+
+#: scripts/title.gd:7
+msgid "Windowed"
+msgstr ""
+
+#: scripts/title.gd:10
+msgid "Sound On"
+msgstr ""
+
+#: scripts/title.gd:11
+msgid "Sound Off"
+msgstr ""
+
+#: scripts/title.gd:12
+msgid "SFX Only"
+msgstr ""
+
+#: scripts/game.gd:96
+msgid "MELEE"
+msgstr ""
+
+#: scripts/game.gd:97
+msgid "RAPID"
+msgstr ""
+
+#: scripts/game.gd:98
+msgid "PRECISE"
+msgstr ""
+
+#: scripts/game.gd:99
+msgid "SPREAD"
+msgstr ""
+
+#: scripts/game.gd:180
+msgid "WAVE"
+msgstr ""
+
+#: scripts/leaderboard_panel.gd:50
+msgid "[YOU]"
+msgstr ""
+
+#: scripts/leaderboard_panel.gd:149
+msgid "WAITING"
+msgstr ""
+
+#: scripts/leaderboard_panel.gd:152
+msgid "OK!"
+msgstr ""
+
+msgid "Finger Blast"
+msgstr ""
