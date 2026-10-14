@@ -43,6 +43,8 @@ func _ready() -> void:
 	remove_buff()
 	Engine.time_scale = 1
 	SE.in_game(true)
+	if OS.has_feature("steam"):
+		score += 1
 	
 	await fill_tomb(tomb_count)
 	$MainTimer.start()

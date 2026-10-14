@@ -78,10 +78,14 @@ layout_mode = 2
 
 [node name="Weekly" type="GridContainer" parent="TabContainer/WeeklyContainer/ScrollContainer" unique_id=1229452364]
 layout_mode = 2
-columns = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 4
+columns = 4
 
 [node name="LoadingLabel" type="Label" parent="TabContainer/WeeklyContainer/ScrollContainer/Weekly" unique_id=669547341]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Loading..."
 horizontal_alignment = 1
 
@@ -100,10 +104,14 @@ layout_mode = 2
 
 [node name="AllTime" type="GridContainer" parent="TabContainer/AllTimeContainer/ScrollContainer" unique_id=647882822]
 layout_mode = 2
-columns = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 4
+columns = 4
 
 [node name="LoadingLabel" type="Label" parent="TabContainer/AllTimeContainer/ScrollContainer/AllTime" unique_id=815269910]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Loading..."
 horizontal_alignment = 1
 

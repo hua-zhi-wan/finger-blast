@@ -75,4 +75,5 @@ func _on_button_language_pressed() -> void:
 
 
 func _on_button_quit_pressed() -> void:
-	get_tree().quit()
+	if is_inside_tree():
+		get_tree().change_scene_to_file("res://scenes/about.tscn")

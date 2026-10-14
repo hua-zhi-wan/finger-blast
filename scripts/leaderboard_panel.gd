@@ -102,25 +102,21 @@ func _ready() -> void:
 
 
 func _insert_record(grid: GridContainer, rank: int, nickname: String, score: int, is_your_score: bool) -> Control:
-	var label = Label.new()
-	grid.add_child(label)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	if rank < 0:
-		label.text = "#???"
-	else:
-		label.text = "#%d" % rank
-	label.text = label.text.lpad(8)
-	if is_your_score:
-		label.self_modulate = your_record_color
-	
-	label = Label.new()
-	grid.add_child(label)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	var rank_str = "#???"
+	if rank > 0:
+		rank_str = "#%d" % rank
+	rank_str = rank_str.lpad(8)
 	nickname = nickname.lpad(15)
 	var score_str = var_to_str(score).lpad(8)
-	label.text = "%s  -  %s" % [nickname, score_str]
-	if is_your_score:
-		label.self_modulate = your_record_color
+	
+	var label: Label
+	for s: String in [rank_str, nickname, "  -  ", score_str]:
+		label = Label.new()
+		grid.add_child(label)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		label.text = s
+		if is_your_score:
+			label.self_modulate = your_record_color
 	
 	return label
 
