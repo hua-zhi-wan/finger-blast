@@ -39,6 +39,7 @@ var score_bar: int = 10000
 
 func _ready() -> void:
 	heart_node.get_parent().remove_child(heart_node)
+	wave_label.text = ""
 	update_heart()
 	remove_buff()
 	Engine.time_scale = 1
@@ -175,9 +176,9 @@ func _wave() -> void:
 	if enemy_count > 0:
 		return
 	wave_index += 1
+	wave_label.text = "%s:%d" % [tr("WAVE"), wave_index]
 	if wave_index > 1:
 		Engine.time_scale = clampf(Engine.time_scale + 0.02, 1, 1.8)
-		wave_label.text = "%s:%d" % [tr("WAVE"), wave_index]
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.stop()

@@ -49,6 +49,8 @@ func _on_setting_changed(key: String, value):
 					AudioServer.set_bus_mute(0, false)
 					AudioServer.set_bus_mute(2, true)
 					button_sound.text = info_sfx_only
+		"language":
+			TranslationServer.set_locale(value)
 
 
 
@@ -69,9 +71,10 @@ func _on_button_full_screen_pressed() -> void:
 func _on_button_sound_pressed() -> void:
 	Global.set_setting("sound", (Global.get_setting("sound") + 1) % 3)
 
-
+@onready var languages = TranslationServer.get_loaded_locales()
 func _on_button_language_pressed() -> void:
-	pass # Replace with function body.
+	var locale = Global.get_setting("language") as String
+	Global.set_setting("language", languages.get((languages.find(locale) + 1) % languages.size()))
 
 
 func _on_button_quit_pressed() -> void:
