@@ -7,9 +7,12 @@ extends Control
 @export var buttons: Array[Button]
 
 func _ready() -> void:
+	Engine.time_scale = 1.0
+	
 	SE.in_game(false)
 	Global.score = 0
 	Global.need_submit = false
+	
 	button_play.grab_focus()
 	if not Global.setting_changed.is_connected(_on_setting_changed):
 		Global.setting_changed.connect(_on_setting_changed)

@@ -1,16 +1,14 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://b1pynbmmc2q1l"]
 
-[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_j3pel"]
-resource_name = "Limiter"
+[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_j3pel"]
+resource_name = "HardLimiter"
 ceiling_db = -1.0
-threshold_db = -3.0
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
 threshold = -12.0
 ratio = 2.0
-release_ms = 50.0
-sidechain = &"Master"
+release_ms = 20.0
 
 [sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_j3pel"]
 resource_name = "EQ6"
@@ -19,7 +17,7 @@ band_db/1000_hz = -20.0
 band_db/3200_hz = -15.0
 
 [resource]
-bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
+bus/0/effect/0/effect = SubResource("AudioEffectHardLimiter_j3pel")
 bus/0/effect/0/enabled = true
 bus/1/name = &"BUS"
 bus/1/solo = false

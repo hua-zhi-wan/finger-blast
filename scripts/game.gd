@@ -101,6 +101,8 @@ func _process(delta: float) -> void:
 		buff_label.text = "%s:%d" % [buff_str, ceili(buff_timer)]
 		if buff_timer <= 0:
 			remove_buff()
+	if get_enemy_count() < 5 and $NextWaveTimer.is_stopped():
+		$NextWaveTimer.start()
 
 
 func fill_tomb(n: int):
@@ -170,11 +172,6 @@ func update_heart():
 
 
 func _wave() -> void:
-	var enemy_count = 0
-	for tag in ['soldier', 'rusher', 'swinger', 'cleaner']:
-		enemy_count += get_tree().get_node_count_in_group(tag)
-	if enemy_count > 0:
-		return
 	wave_index += 1
 	wave_label.text = "%s:%d" % [tr("WAVE"), wave_index]
 	if wave_index > 1:
@@ -182,6 +179,7 @@ func _wave() -> void:
 	
 	for timer: Timer in get_tree().get_nodes_in_group('game_timer'):
 		timer.stop()
+	$NextWaveTimer.stop()
 	
 	if wave_index > 1:
 		for entity: Node2D in $Tombs.get_children():
@@ -221,8 +219,16 @@ func spawn_soldiers(count: int, buff_flag: bool):
 		await get_tree().create_timer(16.0 / soldier.move_speed, false).timeout
 
 
+func get_enemy_count() -> int:
+	var enemy_count = 0
+	for tag in ['soldier', 'rusher', 'swinger', 'cleaner']:
+		enemy_count += get_tree().get_node_count_in_group(tag)
+	return enemy_count
+
 
 func _on_timer_timeout() -> void:
+	if get_enemy_count() > 0:
+		return
 	_wave()
 
 
@@ -249,3 +255,10 @@ func _on_swinger_timer_timeout() -> void:
 			max_swinger += 1
 		if get_tree().get_node_count_in_group('swinger') < max_swinger:
 			swinger_queue += 1
+
+
+func _on_next_wave_timer_timeout() -> void:
+	swinger_queue += 2
+	rusher_queue += 2
+	cleaner_queue += 2
+	_wave()

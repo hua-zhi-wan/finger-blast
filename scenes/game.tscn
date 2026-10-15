@@ -241,9 +241,13 @@ wait_time = 3.0
 [node name="SwingerTimer" type="Timer" parent="." unique_id=1332134619 groups=["game_timer"]]
 wait_time = 6.0
 
+[node name="NextWaveTimer" type="Timer" parent="." unique_id=600086950]
+wait_time = 40.0
+
 [connection signal="pressed" from="UI/PauseRect/ButtonResume" to="UI/PauseRect" method="_on_button_resume_pressed"]
 [connection signal="pressed" from="UI/PauseRect/ButtonQuit" to="UI/PauseRect" method="_on_button_quit_pressed"]
 [connection signal="timeout" from="MainTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RusherTimer" to="." method="_on_rusher_timer_timeout"]
 [connection signal="timeout" from="CleanerTimer" to="." method="_on_cleaner_timer_timeout"]
 [connection signal="timeout" from="SwingerTimer" to="." method="_on_swinger_timer_timeout"]
+[connection signal="timeout" from="NextWaveTimer" to="." method="_on_next_wave_timer_timeout"]
